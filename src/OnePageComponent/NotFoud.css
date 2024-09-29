@@ -1,0 +1,70 @@
+.notfound h1{
+    font-family: "Luckiest Guy", cursive;
+    font-weight: 400;
+    font-size: 5rem;
+}
+
+
+.notfound{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url(../images/joshua-earle-t6QYC3Zmis0-unsplash.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.notfound .not{
+    display: flex;
+    align-items: center;
+    font-family: "Orbitron", sans-serif;
+}
+
+.notfound .not h2{
+    font-family: "Orbitron", sans-serif;
+    font-size: 4rem;   
+    font-weight: 600;
+}
+
+.notfound .not p{
+    font-size: 3rem;
+    font-weight: 600;
+    padding-top: 5px;
+}
+
+.notfound button{
+    background-color: black;
+    color: aliceblue;
+    transition: 0.2s ease all;
+    text-decoration: none;
+    border-radius: none;
+    border: none;
+    transition: 0.8s ease all;
+    font-weight: 600;
+    padding: 8px  20px;
+    border: 2px solid black;
+    margin-left: 2px;
+    border-radius: 7px;
+    font-family: "Orbitron", sans-serif;
+    font-size: 1.3rem;
+}
+.notfound button:hover{
+    color: black;
+    background-color: white;
+}
+
+@media (max-width: 986px){
+    .notfound button{
+        font-size: 12px;
+    }
+    .notfound .not h2{
+        font-size: 2rem;
+    }
+    .notfound .not p{
+        font-size: 1rem;
+    }
+
+}

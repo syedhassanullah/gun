@@ -1,0 +1,638 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities; 
+ 
+ 
+ 
+ * {
+     margin: 0;
+     padding: 0;
+     scroll-behavior: smooth;
+     scroll-snap-type: proximity;
+ }
+
+
+
+:root {
+  --primary-color: #3498db; /* A shade of blue */
+  --secondary-color: #14aa00; /* A shade of green */
+  --accent-color: #e74c3c; /* A shade of red */
+  --background-color: #000000; /* Light gray background */
+  --text-color: #033b01af;
+  --text-heading:  "Orbitron", sans-serif;
+  --text-heading2:"Black Ops One", system-ui; 
+  --secPadding: 50px 0px;
+}
+
+ /* Body styling */
+ /* body {
+    background-color: #34393f;
+} */
+
+ /* Navbar styling */
+ .navbar {
+     padding: 6px 0;
+     background-color: #000000b0;
+     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.37);
+     backdrop-filter: blur(8px);
+     top: 0;
+     margin: 10px 25px;
+     border-radius: 3px;
+
+ }
+
+ .nav-toggle{
+    padding: 0px 10px;
+    margin: 10px;
+    background-color: #ffffff !important;
+
+ }
+
+ .navlink {
+     color: #ffffff;
+     text-decoration: none;
+     padding: 7px 5px;
+     transition: 0.6s ease;
+     font-weight: 600;
+     font-family: var(--text-heading);
+     border-bottom: 2px solid rgba(0, 0, 0, 0);
+     font-size: 14px;
+ }
+
+ .navlink:hover {
+     color: #ffffff;
+     border-bottom: 2px solid yellow;
+ }
+.nav2{
+    text-align: center;
+}
+ .imglog {
+     width: 8rem;
+ }
+
+ /* button  */
+.nbutton {
+     background-color: var(--background-color);
+     color: aliceblue;
+     text-decoration: none;
+     padding: 8px 10px;
+     font-weight: 600;
+     font-family: var(--text-heading);
+     transition: all 0.8s ease;
+     cursor: pointer;
+     text-align: center;
+     border: 2px solid black;
+     border-radius: 2px;
+ }
+
+ .nbutton:hover {
+     color: var(--background-color);
+     background-color: white;
+ }
+
+
+
+ /* ICON */
+
+ 
+ .icon {
+    margin-bottom: 18px;
+    display: flex;
+    padding-top: 20px;
+    justify-content: center;
+}
+
+.icon .icon2 {
+    padding: 0px 17px;
+    cursor: pointer;
+    transition: transform 0.3s ease-out;
+    color: rgb(122, 122, 122);
+}
+
+.icon2:hover {
+    color: rgb(202, 202, 202);
+    transform: scale(1.8);
+}
+
+/* HEADINGS */
+.heading{
+    color: var(--secondary-color);
+    font-size: 50px;
+    font-family: var(--text-heading);
+    font-weight: 800;
+    padding: 60px 0px;
+}
+
+
+ /* Contact form styling */
+ .contact2 {
+     width: 800px;
+ }
+
+ .cForm {
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     text-align: center;
+     border-radius: 10px;  
+ }
+
+ .cForm .nbutton{
+    background-color: transparent;
+    border: none;
+ }
+ .cinput .custom-input{
+    border-radius: 0px;
+    padding: 10px; 
+    border-radius: 0px;
+    transition: border-color 0.3s ease; 
+    
+  }
+
+  .cinput .custom-input:focus{
+    border: 1px solid #000000; 
+    box-shadow: 0 0 0 0.2rem rgba(51, 255, 0, 0.377);
+  }
+
+
+
+
+
+ /* Hero section styling */
+ 
+ .hhero{
+    background-image: url(../images/hero.jpg);  
+     background-size: cover;
+     background-attachment: fixed;
+     animation: zoomInOut 12s infinite;
+    
+ }
+
+ @keyframes zoomInOut {
+    0% {
+        background-size: 100%; 
+    }
+    50% {
+        background-size: 120%; 
+    }
+    100% {
+        background-size: 100%; 
+    }
+
+}
+ .hero {
+     display: flex;
+     flex-wrap: wrap;
+     align-items: center;
+     padding: 2% 10%;
+     
+ }
+
+ .hero-box {
+     width: 100%;
+     height: 90vh;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     color: white;
+     margin-top: 0px;
+ }
+
+ .himg2 {
+     position: absolute;
+ }
+
+ .himg2 .imglog {
+     width: 1000px;
+     align-items: center;
+     text-align: center;
+     opacity: 50%;
+ }
+
+ .hero-box h1 {
+     font-size: 60px;
+     font-family:var(--text-heading2);
+     font-weight: 400;
+ }
+
+ .hero-box h1 span {
+     color: #14aa00;
+ }
+
+
+
+
+
+
+ /* Product section styling */
+ .product{
+    padding: var(--secPadding);
+ }
+ .product .cardbx {
+     display: flex;
+     flex-wrap: wrap;
+     align-items: center;
+     justify-content: center;
+     gap: 22px;
+ }
+ .cardbx .nbutton{
+    color: #fff;
+ }
+ 
+ .cardbx .nbutton:hover{
+    color: #000000;
+ }
+ .cardbx .nbutton a{
+    text-decoration: none;
+ }
+ .cardbx .nbutton a:hover{
+    color: #000000;
+ }
+ .product .card1 {
+     margin-top: 30px;
+ }
+
+.product-card-box{
+    width: 350px;
+    backdrop-filter: blur(30px);
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    transition: 0.5s all;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.product-card-box:hover{
+    transform: translate(0px, -2px);
+    box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.product-card-img{
+    width: 100%; 
+    height: 300px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 5px;
+
+}
+
+.product-card-img img{
+
+    object-fit: fill; 
+}
+
+.product-card-text{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.product-card-text .nbutton:hover{
+    background-color: transparent;
+    font-weight: 800;
+}
+.product-card-text h4{
+    font-size: 20px;
+    font-family: var(--text-heading);
+    font-weight: 600;
+}
+
+.product-card-text p{
+    display: -webkit-box; 
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    line-height: 1.5; 
+    font-size: 13px;
+}
+
+.product-card-price {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+
+.product-card-text .nbuttonc a{
+    text-decoration: none;
+    color: #000000;
+    font-family:var(--text-heading);
+    font-weight: 800;
+    background-color: #00000021;
+    text-align: center;
+    padding: 9px 20px;
+    height: auto;
+    width: 10px;
+}
+
+
+/* About container styling */
+.about{
+    padding: var(--secPadding);
+}
+.about h2{
+    font-family: var(--text-heading);
+}
+
+
+/* Gellary */
+.gallery-top{
+    padding: var(--secPadding);
+}
+
+ /* App container styling */
+ .App {
+     text-align: center;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     background-color: black;
+     display: flex;
+     flex-direction: row;
+ }
+
+ .App h1 {
+     color: rgba(255, 255, 255, 0.61);
+     padding-top: 6px;
+     padding-left: 8px;
+ }
+
+ /* Services--------------------------  */
+
+ .service{
+    display: flex;
+    flex-wrap: wrap;
+    padding: var(--secPadding);
+}
+
+.service-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between cards */
+    justify-content: center; /* Center cards */
+  }
+  
+  .card-box {
+    background: #fff; /* Initial background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Initial shadow */
+    padding: 20px; /* Inner spacing */
+    width: 45%; /* Card width (two cards in a row) */
+    height: 200px; /* Fixed height for cards */
+    position: relative; /* For positioning the overlay */
+    overflow: hidden; /* Prevent overflow */
+    transition: color 0.3s ease; /* Text color transition */
+    text-align: center; /* Center text */
+  }
+  
+  .card-box h2 {
+    margin: 0 0 10px; /* Spacing below heading */
+  }
+  
+  .card-box p {
+    color: #666; /* Text color for description */
+  }
+  
+  .card-box:hover {
+    color: #fff; /* Change text color on hover */
+  }
+  
+  .card-box:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Start from the left */
+    height: 100%;
+    width: 100%;
+    background: #3498db; /* Background color on hover */
+    transition: left 0.5s ease; /* Transition effect */
+  }
+  
+  .card-box:hover::before {
+    left: 0; /* Move to the left on hover */
+  }
+  
+.button{
+    width: 200px;
+ }
+ .button1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0px;
+ }
+
+
+
+ 
+
+ /* MAP STYLING */
+ .map {
+     padding: 20px 0px;
+     background-color:#15ff002d;
+ }
+
+ /* Footer styling */
+ .footer { 
+    font-family: var(--text-heading);
+     background-color: #000000;
+     padding: 25px 0px;
+ }
+
+ .fnav {
+     display: flex;
+     flex-direction: column;
+ }
+
+ .fnav .navlink {
+     font-weight: 400;
+     margin-bottom: 3px;
+     color: rgba(255, 255, 255, 0.794);
+     transition: border-bottom 0.6s ease;
+     border-bottom: 2px solid black;
+     font-size: 15px;
+     gap: 1;
+     }
+
+ .fnav .navlink:hover {
+    color: rgb(255, 255, 255);
+    border-bottom: 2px solid white;
+    
+ }
+
+
+ /* LOGIN BOX -------------- */
+
+ .login-box{
+    box-shadow: 0 0 0 0.10rem rgba(0, 0, 0, 0.219);
+ }
+
+ .login-box h2{
+    font-family: var(--text-heading);
+    color: var(--secondary-color);
+ }
+
+ .login-box .custom-input{
+    border-radius: 0px;
+    padding: 10px; 
+    border-radius: 0px;
+    transition: border-color 0.3s ease; 
+  }
+
+  .login-box .custom-input:focus{
+    border: 1px solid #000000; 
+    box-shadow: 0 0 0 0.2rem rgba(51, 255, 0, 0.377);
+  }
+  .login-box .lbtn{
+    border: 2px solid black;
+  }
+  
+ /* Media queries for responsiveness */
+ @media (max-width: 986px) {
+     .hero-box {
+         text-align: center;
+         height: 50vh;
+     }
+
+     .hero-box h1 {
+         font-size: 42px;
+     }
+
+     .hero-box h1 span {
+         color: #14aa00;
+     }
+     .footer{
+        justify-content: center;
+        align-items: center;
+
+     }
+     
+     .fnav{
+        justify-content: center;
+        margin-bottom: 20px;
+
+ 
+     }
+     .fimg{
+        text-align: center;
+     }
+   
+ 
+ }
+ @media (max-width: 750px) {
+    .hhero{
+        background-image: url(../images/heromobile.jpg);  
+         background-size:contain;
+         background-attachment: fixed;
+         animation: zoomInOut 12s infinite;
+        
+     }
+    
+     @keyframes zoomInOut {
+        0% {
+            background-size: 100%; 
+        }
+        50% {
+            background-size: 120%; 
+        }
+        100% {
+            background-size: 100%; 
+        }
+ }
+ .hero-box{
+    margin-top: 30px;
+
+ }
+ 
+}
+ @media (max-width: 516px) {
+     .fimg .imglog {
+         width: 15rem;
+         margin-bottom: 15px;
+     }
+   
+    .hero-box {
+        text-align: center;
+        height: 50vh;
+    }
+
+    .hero-box h1 {
+        font-size: 30px;
+    }
+
+    .hero-box h1 span {
+        color: #14aa00;
+    }
+
+    .fnav .navlink {
+        font-weight: 200;
+        font-size: 12px;
+    }
+
+    .fimg .imglog {
+        width: 14rem;
+        margin-bottom: 15px;
+    }
+    .heading{
+       color: var(--secondary-color);
+       font-size: 25px;
+       font-family: var(--text-heading);
+       font-weight: 800;
+       padding: 20px 0px;
+}
+
+} @media (max-width: 490px){
+    .product-card-box{
+       width: 140px;
+       padding: 2px;
+       
+   }
+   .product-card-text{
+    gap: 0px;
+   }
+   .product-card-text p{
+       display: -webkit-box; 
+       -webkit-line-clamp: 2; 
+       -webkit-box-orient: vertical;
+       overflow: hidden; 
+       text-overflow: ellipsis; 
+       line-height: 1; 
+
+       font-size: 11px;
+   }
+   .product-card-img img{
+       max-width: 400px;
+       max-height: 500px;
+       object-fit: fill; 
+   }
+   .product-card-img{
+       width: 100%; 
+       height: 150px; 
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       overflow: hidden;
+   
+   }
+   .product-card-text .nbuttonc a{
+    text-decoration: none;
+    color: #000000;
+    font-family:var(--text-heading);
+    font-weight: 800;
+    background-color: #00000021;
+    text-align: center;
+    padding: 5px 20px;
+
+    height: auto;
+    width: 0px;
+    font-size: 9px;
+}
+   
+ }
+
+
+ 
