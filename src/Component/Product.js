@@ -32,29 +32,28 @@ export default function Product() {
 
 
         <div className='cardbx'>
-          {posts.map((item, index) => (
-
-            <div className='cardbx' key={index}>
-
-              <div className='product-card-box'>
-                <div className='product-card-img'>
-                  <img src={require(`../uploads/${item.image}`)} alt='' />
-                </div>
-                <div className='product-card-text'>
-                  <h4>{item.productTitle}</h4>
-                  <p>{item.description}</p>
-                  <div className='product-card-price'>
-                    <h6>Price</h6>
-                    <h6>{item.price}$</h6>
-                  </div>
-                  <div className='nbuttonc' >
-                    <Link to={'/productDetals'}>Buy Now</Link >
-                      </div>
-                </div>
-              </div>
-            </div>
-          ))}
+  {posts?.slice(0, 6).map((item, index) => (
+    <div className='card' key={index}>
+      <div className='product-card-box'>
+        <div className='product-card-img'>
+          <img src={require(`../uploads/${item.image}`)} alt={item.productTitle} />
         </div>
+        <div className='product-card-text'>
+          <h4>{item.productTitle}</h4>
+          <p>{item.description}</p>
+          <div className='product-card-price'>
+            <h6>Price</h6>
+            <h6>{item.price}$</h6>
+          </div>
+          <div className='nbuttonc'>
+            <Link to='/productDetals'>Buy Now</Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
         <div>
 
         </div>

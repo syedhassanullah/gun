@@ -13,7 +13,8 @@ import AdminProduct from './AdminPanel/AdminComponent/AdminProduct';
 import AdminProduct2 from './AdminPanel/AdminComponent/AdminProduct2';
 import AdminLogin from './AdminPanel/AdminLogin';
 import AdminDash from './AdminPanel/AdminComponent/AdminDash';
-import productDetail from './OnePageComponent/productDetail';
+import ProductInfo from './OnePageComponent/ProductInfo';
+import AddCart from './OnePageComponent/AddCart'
 
 // import Server from './Server.js';
 
@@ -71,7 +72,8 @@ function App() {
             <Route path="/gellary" element={<Gallery />} />
             <Route path="/service" element={<Service/>} />
             <Route path="/product" element={<Product />} />
-            <Route path="/productDetals" element={<productDetail/>} />
+            <Route path="/productDetals" element={<ProductInfo/>} />
+            <Route path="/addcart" element={<AddCart/>} />
             <Route path="404" element={<NotFound />} />
             <Route path="adminlogin" element={<AdminLogin/>} />
             <Route path="admin" element={<AdminIndex />}>

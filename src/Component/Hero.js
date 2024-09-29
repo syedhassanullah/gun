@@ -24,7 +24,7 @@ import { Container } from 'react-bootstrap';
 const Hero = () => {
   return (
     < >
-      <div className='hhero'>
+      <div className='hhero' id='home'>
    
         <Container fluid>
           <div className='hero h-100' id='home'>

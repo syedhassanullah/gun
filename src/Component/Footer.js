@@ -67,7 +67,7 @@ export default function Footer() {
     <footer class=" text-white p-6 md:p-10">
     <div class="container mx-auto flex flex-col md:flex-row justify-center items-center">
       <div class="mb-6 md:mb-0 flex justify-center md:justify-start">
-        <img src={img1} className=' md:w-64 lg:w-80' alt="logo" />
+        <img src={img1} className=' md:w-80 lg:w-96' alt="logo" />
       </div>
   
       <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-16">
