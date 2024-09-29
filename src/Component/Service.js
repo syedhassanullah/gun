@@ -29,17 +29,13 @@ function Service() {
           <div className='card-box'>
             <h2>Srervice</h2>
           </div>
-          
+          <div className='button'>
+          <Contact/>
+        </div>
       
           
         </div>
-        <div className='button1'>
-        <div className='button'>
-        <div className='nbutton'>
-          <Contact/>
-        </div>
-        </div>
-        </div>
+        
       </Container >
     </div>
   )

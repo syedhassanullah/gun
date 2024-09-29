@@ -1,7 +1,7 @@
 import React from 'react'
 import './Component.css'
 import { Container } from 'react-bootstrap';
-import image from '../images/New folder/close-up-gun-inside-suitcase.jpg'
+import image from '../images/image/close-up-gun-inside-suitcase.jpg'
 
 
 export default function About() {
@@ -26,7 +26,7 @@ export default function About() {
       </div>
       <div className=' flex justify-center'>
         <img
-          src={image}
+        src={image}
           alt="About Us"
           className='w-96 h-auto rounded-lg shadow-lg object-cover'
         />

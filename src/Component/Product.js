@@ -50,14 +50,19 @@ export default function Product() {
                   <div className='nbuttonc' >
                     <Link to={'/productDetals'}>Buy Now</Link >
                       </div>
-
                 </div>
               </div>
             </div>
           ))}
         </div>
+        <div>
 
+        </div>
+        
       </Container>
+      <div className='nbutton pbutton'>
+        <Link to={'/productDetals'}>See More</Link >
+        </div>
     </div>
   );
 }

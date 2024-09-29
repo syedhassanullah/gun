@@ -94,7 +94,7 @@ export default function Footer() {
         </div>
   
         <div className='fnav'>
-          <h5 class="font-bold mb-2 text-lg ">Contact</h5>
+          <h5 class="font-bold mb-2 text-lg contact ">Contact</h5>
           <p >Email: <a href="mailto:info@example.com" class="hover:text-gray-400 navlink">info@example.com</a></p>
           <p>Phone: <a href="tel:+1234567890" class="hover:text-gray-400 navlink">+1 (234) 567-890</a></p>
           <div className='icon' >

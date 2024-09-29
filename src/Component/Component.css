@@ -73,9 +73,9 @@
  /* button  */
 .nbutton {
      background-color: var(--background-color);
-     color: aliceblue;
+     color: var(--secondary-color);
      text-decoration: none;
-     padding: 8px 10px;
+     padding: 6px 10px;
      font-weight: 600;
      font-family: var(--text-heading);
      transition: all 0.8s ease;
@@ -83,10 +83,11 @@
      text-align: center;
      border: 2px solid black;
      border-radius: 2px;
+     width: 200px;
  }
 
  .nbutton:hover {
-     color: var(--background-color);
+     color: var(--secondary-color);
      background-color: white;
  }
 
@@ -228,6 +229,10 @@
  /* Product section styling */
  .product{
     padding: var(--secPadding);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction:column;
  }
  .product .cardbx {
      display: flex;
@@ -236,19 +241,7 @@
      justify-content: center;
      gap: 22px;
  }
- .cardbx .nbutton{
-    color: #fff;
- }
- 
- .cardbx .nbutton:hover{
-    color: #000000;
- }
- .cardbx .nbutton a{
-    text-decoration: none;
- }
- .cardbx .nbutton a:hover{
-    color: #000000;
- }
+
  .product .card1 {
      margin-top: 30px;
  }
@@ -317,7 +310,7 @@
 }
 
 
-.product-card-text .nbuttonc a{
+ .nbuttonc a{
     text-decoration: none;
     color: #000000;
     font-family:var(--text-heading);
@@ -326,7 +319,16 @@
     text-align: center;
     padding: 9px 20px;
     height: auto;
-    width: 10px;
+
+}
+
+.product .nbutton{
+    margin: 35px 0px;
+}
+
+.product .nbutton a{
+    text-decoration: none;
+    color: #14aa00
 }
 
 
@@ -416,16 +418,19 @@
     left: 0; /* Move to the left on hover */
   }
   
-.button{
-    width: 200px;
- }
- .button1{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0px;
+
+
+ .service-card .button{
+    background-color: #000000;
+    margin: 15px 0px;
+    border: 2px solid black;
+    border-radius: 3px ;
+    transition: 0.5s ease all;
  }
 
+ .service-card .button:hover{
+    background-color: #fff;
+ }
 
 
  
@@ -448,7 +453,7 @@
      flex-direction: column;
  }
 
- .fnav .navlink {
+ .fnav  .navlink {
      font-weight: 400;
      margin-bottom: 3px;
      color: rgba(255, 255, 255, 0.794);
@@ -456,7 +461,12 @@
      border-bottom: 2px solid black;
      font-size: 15px;
      gap: 1;
+
      }
+.fnav .contact .navlink{
+    font-family: none;
+}
+
 
  .fnav .navlink:hover {
     color: rgb(255, 255, 255);
