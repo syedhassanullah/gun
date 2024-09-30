@@ -73,7 +73,7 @@ function App() {
             <Route path="/service" element={<Service/>} />
             <Route path="/product" element={<Product />} />
             <Route path="/productDetals" element={<ProductInfo/>} />
-            <Route path="/addcart" element={<AddCart/>} />
+            <Route path="/addcart/:cardid" element={<AddCart/>} />
             <Route path="404" element={<NotFound />} />
             <Route path="adminlogin" element={<AdminLogin/>} />
             <Route path="admin" element={<AdminIndex />}>

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 export default function Product() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(null);
 
   useEffect(() => {
     GetDynamicData();
@@ -46,7 +46,7 @@ export default function Product() {
             <h6>{item.price}$</h6>
           </div>
           <div className='nbuttonc'>
-            <Link to='/productDetals'>Buy Now</Link>
+            <Link to={`/addcart/${item.productTitle}` }  state={{ title: item.productTitle}}>Buy Now</Link>
           </div>
         </div>
       </div>
@@ -77,3 +77,5 @@ export default function Product() {
                       <div className='nbutton' style={{ width: "8rem" }}>Buy Now</div>
                     </Card.Body>
                   </Card> */
+
+                  // to={`/addcart/${item.productTitle}`}

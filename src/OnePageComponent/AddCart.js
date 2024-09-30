@@ -1,32 +1,40 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import Offcanvas from 'react-bootstrap/Offcanvas';
-
-
+import Footer from '../Component/Footer';
+import { Container } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const AddCart = () => {
-  const [show, setShow] = useState(false);
+  const { cardid } = useParams();
+  const [post, setPost] = useState(null); // Initialize as null
+  const { state: { productTitle } } = useLocation();
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await fetch(`http://localhost:8000/api/product/${cardid}`);
+        const data = await res.json();
+        console.log("API Response:", data); // Log the response
+        setPost(data.data); // Ensure data is set correctly
+      } catch (error) {
+        console.log("Fetch Error:", error);
+      }
+    };
+  
+    getData();
+  }, [cardid]);
+  
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow} className="me-2">
-        open
-      </Button>
-      <Offcanvas show={show} onHide={handleClose} placement='start'>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
-        </Offcanvas.Body>
-      </Offcanvas>
+      <Container>
+        <h1>{post?.productTitle || "Loading..."}</h1>
+        <h2>{productTitle || "Loading..."}</h2>
+        <Button>click</Button>
+      </Container>
+      <Footer />
     </>
   );
-
 }
-
 export default AddCart;

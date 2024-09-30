@@ -12,10 +12,12 @@ const Home = () => {
     <div >
       <Layout>
       <Hero/>
+      <div style={{margin:"0px 0px"}}>
       <Product/>
       <About/>
       <Gallery/>
       <Service/>
+      </div>
       <Maps/>
       </Layout>
     </div>
