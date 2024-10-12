@@ -112,7 +112,8 @@ html, body, #root {
   --text-heading: "Orbitron", sans-serif;
   --text-color: #033b01af;
   --secondary-color: #14aa00;
-  --padding-inner: 
+  --padding-inner: ;
+  --text-heading2:"Black Ops One", system-ui; 
 }
 
 html,
@@ -127,17 +128,17 @@ body::-webkit-scrollbar {
   width: 7px;
 }
 body::-webkit-scrollbar-thumb {
-  background-color: rgb(13, 13, 13);
+  background-color:rgb(18, 42, 0);
 }
 
 body::-webkit-scrollbar-track {
-  background-color: rgb(72, 72, 72);
-
+  background-color: rgb(53, 123, 0);
 }
 
 .adminindex {
   display: flex;
   background-color: #0023251c;
+  overflow: hidden;
 }
 
 /* Main----------------------------------------- */
@@ -150,7 +151,19 @@ body::-webkit-scrollbar-track {
 }
 
 .main .main-content{
-  padding: 25px;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.main-content::-webkit-scrollbar {
+  width: 3px;
+}
+.main-content::-webkit-scrollbar-thumb {
+  background-color:  rgb(18, 42, 0);
+}
+
+.main-content::-webkit-scrollbar-track {
+  background-color: rgb(53, 123, 0);
+
 }
 
 .dash {
@@ -162,13 +175,23 @@ body::-webkit-scrollbar-track {
 
 .main-head {
  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+ background-color: #ffffff7c;
+ backdrop-filter: blur(4px);
  position: fixed;
  height: 80px;
- background-color: white;
- padding: 0px 60px;
+ padding: 20px 60px;
  width: 100%;
  display: flex;
  align-items: center;
+ 
+font-family: var(--text-heading2);
+}
+
+.main-head h1{
+  font-size: px;
+}
+.main-head h1 span{
+  color: var(--secondary-color);
 }
 
 /* product SECTION------------------------------ */
@@ -179,7 +202,7 @@ body::-webkit-scrollbar-track {
   /* border-radius: 20px ; */
   margin-bottom: 20px;
   transition: box-shadow 0.3s ease;
-  margin-top :80px;
+  margin-top :100px;
 }   
 
 
@@ -210,7 +233,6 @@ body::-webkit-scrollbar-track {
 
 .sidebar-wrapper {
   width: 400px;
-  /* transform: translateX(-25%); */
   /* flex: 0 0 20%; */
   transition: all 0.3s ease;
   background-color: #002325;
@@ -220,10 +242,11 @@ body::-webkit-scrollbar-track {
 .sidebar-wrapper .sidebar {
   width: 100%;
   /* transform: translateX(-20%); */
+    background-color: #002325;
   height: 100vh;
   top: 0px;
   left: 0px;
-  background-color: #002325;
+
   overflow-y: scroll;
   overflow-x: hidden;
   padding-bottom: 40px;
@@ -246,25 +269,18 @@ body::-webkit-scrollbar-track {
 
 
 
-.sidebar-wrapper .sidebar h1 {
+.sidebar-wrapper h1 {
   font-family: var(--text-heading);
   text-align: center;
-  padding: 50px 0px;
+  padding: 60px 0px;
   font-weight: 800;
-}
-
-.sidebar-wrapper .sidebar .link .nav-link {
-  height: 40px;
-  display: flex;
-  align-items: center;
-  padding-left: 30px;
-  font-weight: 600;
-}
-
-.sidebar-wrapper .sidebar .link .nav-link:hover {
   color: rgb(240, 248, 255);
-  background-color: rgba(240, 248, 255, 0.122);
 }
+.sidebar-wrapper h1 span{
+  background-color: var(--secondary-color);
+}
+
+
 /* Toggle button for small screens */
 .toggle-sidebar {
   display: none;
@@ -276,32 +292,33 @@ body::-webkit-scrollbar-track {
   z-index: 1000;
   cursor: pointer;
 }
-.toggle-sidebar .active{
-  left: 400px ;
+.sidebar-wrapper .sidebar .link .nav-link:hover {
+  color: rgb(240, 248, 255);
+  background-color: rgba(240, 248, 255, 0.122);
 }
 
 .sidebar-wrapper .sidebar .link{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 0px 18px;
 }
 
 .sidebar-wrapper .sidebar .link .nav-link {
-  height: 40px;
-  display: flex;
+  padding: 10px;
+
   align-items: center;
-  padding-left: 0px;
-  font-weight: 600;
-  padding: 0px 60px;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 15px;
+  font-family: var(--text-heading);
+  transition: 0.5s ease all;
 }
 @media (max-width: 1024px) {
   .toggle-sidebar {
     display: block;
   }
   .sidebar-wrapper {
-    width: 0px;
     /* flex: 0 0 20%; */
     transition: all 0.3s ease-in-out color;
+    width:0px ;
     background-color: #002325;
     height: 0vh;
     text-align: center;
@@ -319,4 +336,9 @@ body::-webkit-scrollbar-track {
     /* border-radius: 20px ; */
     margin-bottom: 20px;
   }
+  
+.main-head h1{
+  font-size: 25px;
+  margin-bottom: 0px;
+}
 }

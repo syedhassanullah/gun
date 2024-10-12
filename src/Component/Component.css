@@ -310,20 +310,24 @@
 }
 
 
- .nbuttonc a{
+ .nbuttonc {
     text-decoration: none;
     color: #000000;
     font-family:var(--text-heading);
     font-weight: 800;
     background-color: #00000021;
     text-align: center;
-    padding: 9px 20px;
+    padding: 8px 15px;
     height: auto;
+    width: 130px ;
+    cursor: pointer;
+    border-radius: 2px;
 
 }
 
 .product .nbutton{
     margin: 35px 0px;
+    
 }
 
 .product .nbutton a{
@@ -446,7 +450,7 @@
 
  /* Footer styling */
  .footer { 
-    font-family: var(--text-heading);
+    font-family: none;
      background-color: #000000;
  }
 

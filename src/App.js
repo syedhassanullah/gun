@@ -15,6 +15,7 @@ import AdminLogin from './AdminPanel/AdminLogin';
 import AdminDash from './AdminPanel/AdminComponent/AdminDash';
 import ProductInfo from './OnePageComponent/ProductInfo';
 import AddCart from './OnePageComponent/AddCart'
+import ListedProduct from './AdminPanel/AdminComponent/ListedProduct';
 
 // import Server from './Server.js';
 
@@ -79,8 +80,9 @@ function App() {
             <Route path="admin" element={<AdminIndex />}>
             <Route index element={<Navigate to="Index" replace />} />
               <Route path='Index' element={<AdminDash/>} />
-              <Route path="product" element={<AdminProduct />} />
+              <Route path="product-listing" element={<AdminProduct />} />
               <Route path="product2" element={<AdminProduct2 />} />
+              <Route path='listed-product' element={<ListedProduct/>}/>
             </Route>
           </Routes>
         </BrowserRouter>
