@@ -64,21 +64,31 @@ export default function Product() {
 
       <Modal show={show} fullscreen onHide={() => setShow(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal</Modal.Title>
+          <Modal.Title className='modal-name'><h1><span>Product</span>-Details</h1></Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Container>
+
         {selectedProduct ? (
-            <div>
+          <div className='p-modal'>
+            <div className='p-modal-image'>
               <img src={require(`../uploads/${selectedProduct.image}`)} alt={selectedProduct.productTitle} />
-              <h4>{selectedProduct.productTitle}</h4>
-              <p>{selectedProduct.description}</p>
-              <h6>Price: {selectedProduct.price}$</h6>
             </div>
+            <div className='p-modal-text'>
+              <h1>{selectedProduct.productTitle}</h1>
+              <div>
+              <h4>Description.</h4>
+              <p>{selectedProduct.description}</p>
+              </div>
+              <div className='p-modal-text-price'>
+              <h2>price</h2>
+              <h2>{selectedProduct.price}<span>PKR</span></h2>
+              </div>
+            </div>
+          </div>
           ) : (
             <p>Loading...</p>
           )}
-          </Container>
+
         </Modal.Body>
       </Modal>
 

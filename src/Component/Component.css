@@ -336,6 +336,58 @@
 }
 
 
+
+/* Product Modal */
+
+.modal-name{
+    font-family: var(--text-heading2);
+}
+
+.modal-name span{
+    color: var(--secondary-color);
+    padding-left: 100px;
+}
+.p-modal{
+    display: flex;
+    padding: 0px 100px;
+    gap: 30px;
+    margin-top: 80px;
+    align-items: center;
+}
+.p-modal-image{
+    width: 90rem;
+}
+
+.p-modal-text{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.p-modal-text h1{
+    font-family: var(--text-heading2);
+}
+
+.p-modal-text h4{
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.p-modal-text-price{
+    display: flex;
+    justify-content: space-between;
+}
+.p-modal-text-price h2{
+    font-size: 40px;
+
+    font-family: var(--text-heading);
+}
+
+.p-modal-text-price h2 span{
+    color: var(--secondary-color);
+    font-size: 30px;
+}
+
 /* About container styling */
 .about{
     padding: var(--secPadding);
@@ -536,7 +588,15 @@
      .fimg{
         text-align: center;
      }
-   
+     .modal-name span{
+        color: var(--secondary-color);
+        padding-left: 10px;
+    }
+     .p-modal{
+        flex-wrap: wrap;
+        padding: 0px 0px;
+        margin-top: 20px;
+     }
  
  }
  @media (max-width: 750px) {
@@ -599,6 +659,16 @@
        font-family: var(--text-heading);
        font-weight: 800;
        padding: 20px 0px;
+}
+
+.p-modal-text-price h2{
+    font-size: 30px;
+    font-family: var(--text-heading);
+}
+
+.p-modal-text-price h2 span{
+    color: var(--secondary-color);
+    font-size: 25px;
 }
 
 } @media (max-width: 490px){

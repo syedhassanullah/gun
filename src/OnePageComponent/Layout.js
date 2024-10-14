@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../Component/Navbar'
 import Footer from '../Component/Footer'
+import AllRight from '../Component/AllRight'
 
 const Layout = ({children}) => {
   return (
@@ -10,6 +11,7 @@ const Layout = ({children}) => {
         {children}
       </main>
       <Footer/>
+      <AllRight/>
     </div>
   )
 }
