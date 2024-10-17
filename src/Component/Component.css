@@ -138,10 +138,7 @@
      border-radius: 10px;  
  }
 
- .cForm .nbutton{
-    background-color: transparent;
-    border: none;
- }
+
  .cinput .custom-input{
     border-radius: 0px;
     padding: 10px; 
@@ -250,8 +247,8 @@
     width: 350px;
     backdrop-filter: blur(30px);
     overflow: hidden;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-    transition: 0.5s all;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+    transition: 0.3s all;
     padding: 12px;
     border-radius: 5px;
 }
@@ -278,19 +275,16 @@
 }
 
 .product-card-text{
-    padding: 10px;
+    margin-top: 20px;
+    padding: 8px;
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 3px;
 }
-.product-card-text .nbutton:hover{
-    background-color: transparent;
-    font-weight: 800;
-}
+
 .product-card-text h4{
     font-size: 20px;
-    font-family: var(--text-heading);
-    font-weight: 600;
+    font-family: var(--text-heading2);
 }
 
 .product-card-text p{
@@ -307,32 +301,6 @@
     display: flex;
     justify-content: space-between;
     font-weight: 600;
-}
-
-
- .nbuttonc {
-    text-decoration: none;
-    color: #000000;
-    font-family:var(--text-heading);
-    font-weight: 800;
-    background-color: #00000021;
-    text-align: center;
-    padding: 8px 15px;
-    height: auto;
-    width: 130px ;
-    cursor: pointer;
-    border-radius: 2px;
-
-}
-
-.product .nbutton{
-    margin: 35px 0px;
-    
-}
-
-.product .nbutton a{
-    text-decoration: none;
-    color: #14aa00
 }
 
 
@@ -388,6 +356,53 @@
     font-size: 30px;
 }
 
+
+.main-Button{
+    background-color: #000000;
+    width: 210px;
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 8px 0px;
+    border: 2px solid black;
+    font-weight: 800;
+    font-family: var(--text-heading);
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    font-size: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.main-Button:hover{
+    background-color: transparent;
+}
+.main-Button a{
+    list-style: none;
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+.main-small-button{
+    background-color: #000000;
+    width: 100px;
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 5px 0px;
+    border: 2px solid black;
+    font-weight: 800;
+    font-family: var(--text-heading);
+    border-radius: 3px;
+    transition: all 0.5s ease;
+    font-size: 13px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.main-small-button a{
+    text-decoration: none;
+    list-style: none;
+    color: var(--secondary-color);
+}
+
 /* About container styling */
 .about{
     padding: var(--secPadding);
@@ -400,6 +415,9 @@
 /* Gellary */
 .gallery-top{
     padding: var(--secPadding);
+}
+.gallery-top .pic{
+    padding: 0px 70px;
 }
 
  /* App container styling */
@@ -479,17 +497,6 @@
   
 
 
- .service-card .button{
-    background-color: #000000;
-    margin: 15px 0px;
-    border: 2px solid black;
-    border-radius: 3px ;
-    transition: 0.5s ease all;
- }
-
- .service-card .button:hover{
-    background-color: #fff;
- }
 
 
  
@@ -597,7 +604,9 @@
         padding: 0px 0px;
         margin-top: 20px;
      }
- 
+     .gallery-top .pic{
+        padding: 0px 0px;
+    }
  }
  @media (max-width: 750px) {
     .hhero{
@@ -662,13 +671,31 @@
 }
 
 .p-modal-text-price h2{
-    font-size: 30px;
+    font-size: 25px;
     font-family: var(--text-heading);
 }
 
 .p-modal-text-price h2 span{
     color: var(--secondary-color);
-    font-size: 25px;
+    font-size: 20px;
+}
+.main-Button{
+    background-color: #000000;
+    width: 150px;
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 8px 0px;
+    border: 2px solid black;
+    font-weight: 800;
+    font-family: var(--text-heading);
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    font-size: 15px;
+}
+.M-Button{
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
 }
 
 } @media (max-width: 490px){
@@ -704,19 +731,8 @@
        overflow: hidden;
    
    }
-   .product-card-text .nbuttonc a{
-    text-decoration: none;
-    color: #000000;
-    font-family:var(--text-heading);
-    font-weight: 800;
-    background-color: #00000021;
-    text-align: center;
-    padding: 5px 20px;
+  
 
-    height: auto;
-    width: 0px;
-    font-size: 9px;
-}
    
  }
 

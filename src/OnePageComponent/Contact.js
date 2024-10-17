@@ -77,7 +77,7 @@ const Contact = () => {
   return (
     <>
       <div className='cForm'>
-        <div variant="outline-light" className='nbutton' onClick={handleShow} style={{color:'#14aa00' , fontSize:'20px',}}>
+        <div variant="outline-light" className='main-Button' onClick={handleShow} style={{backgroundColor:'transparent',border:'none',margin:'0px',padding:'0px'}}>
           Contact Us
         </div>
 
@@ -137,7 +137,7 @@ const Contact = () => {
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group> */}
              
-                <div className='nbutton' onClick={Submit}>
+                <div className='main-Button' onClick={Submit}>
                   Submit
                 </div>
               

@@ -66,7 +66,7 @@ import pic1 from '../images/new1.jpg'
    <Container>
   <h1 className='heading'>OUR GALLERY</h1>
   
-  <div className=" grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3">
+  <div className="pic grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 ">
     {data.map(({ imageLink }, index) => (
       <div 
         key={index} 

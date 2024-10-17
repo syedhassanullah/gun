@@ -31,7 +31,7 @@ const MainNavbar = () => {
                             <Nav.Link as={Link} to='/admin' href='#admin'><span className='navlink'>admin</span></Nav.Link>
                             <Nav.Link as={Link} to='/adminlogin' href='#login'><span className='navlink'>adminlogin</span></Nav.Link>
                         </Nav>
-                        <Contact />
+                        <Contact  style={{fontSize:'22px'}}/>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

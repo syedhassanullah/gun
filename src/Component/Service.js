@@ -9,8 +9,6 @@ function Service() {
       <Container >
         <h1 className='heading'>OUR SERVICES</h1>
         <div className='service-card'>
-         
-          
           <div className='card-box'>
             <h2>Srervice</h2>
           </div>
@@ -29,11 +27,9 @@ function Service() {
           <div className='card-box'>
             <h2>Srervice</h2>
           </div>
-          <div className='button'>
-          <Contact/>
-        </div>
-      
-          
+          <div className='main-Button' style={{marginTop:'40px'}}>
+            <Contact />
+          </div>
         </div>
         
       </Container >

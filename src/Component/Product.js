@@ -52,7 +52,7 @@ export default function Product() {
                     <h6>Price</h6>
                     <h6>{item.price}$</h6>
                   </div>
-                  <div className='nbuttonc' onClick={() => openModal(item)}>
+                  <div className='main-small-button' onClick={() => openModal(item)}>
                     BUY NOW
                   </div>
                 </div>
@@ -83,6 +83,11 @@ export default function Product() {
               <h2>price</h2>
               <h2>{selectedProduct.price}<span>PKR</span></h2>
               </div>
+              <div className='M-Button'>
+                <div className='main-Button'>
+                  Conform Purchase
+                </div>
+              </div>
             </div>
           </div>
           ) : (
@@ -92,7 +97,7 @@ export default function Product() {
         </Modal.Body>
       </Modal>
 
-      <div className='nbutton pbutton'>
+      <div className='main-Button' style={{marginTop:'40px'}}>
         <Link to={'/productDetals'}>See More</Link >
       </div>
 
