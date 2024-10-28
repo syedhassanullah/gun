@@ -4,6 +4,8 @@ import './Component.css'
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 
 
@@ -11,6 +13,11 @@ export default function Product() {
   const [posts, setPosts] = useState(null);
   const [show, setShow] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [show1, setShow1] = useState(false);
+  const handleClose = () => setShow1(false);
+  const handleShow = () => setShow1(true);
+
+
 
   useEffect(() => {
     GetDynamicData();
@@ -28,7 +35,7 @@ export default function Product() {
     }
   };
 
-  const openModal =(item)=>{
+  const openModal = (item) => {
     setShow(true)
     setSelectedProduct(item)
   }
@@ -68,28 +75,89 @@ export default function Product() {
         </Modal.Header>
         <Modal.Body>
 
-        {selectedProduct ? (
-          <div className='p-modal'>
-            <div className='p-modal-image'>
-              <img src={require(`../uploads/${selectedProduct.image}`)} alt={selectedProduct.productTitle} />
-            </div>
-            <div className='p-modal-text'>
-              <h1>{selectedProduct.productTitle}</h1>
-              <div>
-              <h4>Description.</h4>
-              <p>{selectedProduct.description}</p>
+          {selectedProduct ? (
+            <div className='p-modal'>
+              <div className='p-modal-image'>
+                <img src={require(`../uploads/${selectedProduct.image}`)} alt={selectedProduct.productTitle} />
               </div>
-              <div className='p-modal-text-price'>
-              <h2>price</h2>
-              <h2>{selectedProduct.price}<span>PKR</span></h2>
-              </div>
-              <div className='M-Button'>
-                <div className='main-Button'>
-                  Conform Purchase
+              <div className='p-modal-text'>
+                <h1>{selectedProduct.productTitle}</h1>
+                <div>
+                  <h4>Description.</h4>
+                  <p>{selectedProduct.description}</p>
+                </div>
+                <div className='p-modal-text-price'>
+                  <h2>price</h2>
+                  <h2>{selectedProduct.price}<span>PKR</span></h2>
+                </div>
+                <div className='M-Button'>
+                  <div className='main-Button' onClick={handleShow}>
+                    Confirm Purchase
+                  </div>
+
+                  <Modal show={show1} onHide={handleClose} centered size="lg">
+                    <Modal.Header closeButton style={{display:'flex', msFlexDirection:'column'}}>
+                      <Modal.Title>{selectedProduct.productTitle}</Modal.Title>
+                      <h4>Cash On Delivery</h4>
+                    </Modal.Header>
+                    <div>
+                      
+                    <Modal.Body  style={{display:'flex', flexWrap:'wrap'}}>
+                    <div style={{background:'black',width:'50%'}}></div>
+                      <Form className='main-form'>
+                        <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
+                          <Form.Label>Your Full Name</Form.Label>
+                          <Form.Control
+                            className='main-custom-input'
+                            placeholder="full name "
+                          />
+                        </Form.Group>
+                        <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
+                          <Form.Label>What's App Number / Contact Number</Form.Label>
+                          <Form.Control
+                            className='main-custom-input'
+                            placeholder="number"
+                            maxLength={20}
+                          />
+                        </Form.Group>
+                        <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
+                          <Form.Label>Address</Form.Label>
+                          <Form.Control
+                            className='main-custom-input'
+                            as="textarea"
+                            placeholder="House# Area Town City . . . ."
+                            rows={3}
+                          />
+                        </Form.Group>
+                        <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
+                          <Form.Label>Nearest Landmark</Form.Label>
+                          <Form.Control
+                            className='main-custom-input'
+                            placeholder="like shop / masjid / School /etc"
+                          />
+                        </Form.Group>
+                        {/* <Form.Group
+                          className="mb-3"
+                          controlId="exampleForm.ControlTextarea1"
+                        >
+                          <Form.Label>Example textarea</Form.Label>
+                          <Form.Control as="textarea" className='main-custom-input' rows={3} />
+                        </Form.Group> */}
+                      </Form>
+                    </Modal.Body>
+                    </div>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose}>
+                        Close
+                      </Button>
+                      <Button variant="primary" onClick={handleClose}>
+                        Save Changes
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
                 </div>
               </div>
             </div>
-          </div>
           ) : (
             <p>Loading...</p>
           )}
@@ -97,7 +165,7 @@ export default function Product() {
         </Modal.Body>
       </Modal>
 
-      <div className='main-Button' style={{marginTop:'40px'}}>
+      <div className='main-Button' style={{ marginTop: '40px' }}>
         <Link to={'/productDetals'}>See More</Link >
       </div>
 

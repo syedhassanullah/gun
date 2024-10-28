@@ -92,6 +92,25 @@
  }
 
 
+/* INPUT */
+
+
+
+.main-form .main-custom-input {
+    border-radius: 0px;
+    padding: 10px;
+    border-radius: 0px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .main-form .main-custom-input:focus {
+  
+    border: 1px solid #000000;
+    box-shadow: 0 0 0 0.2rem rgba(51, 255, 0, 0.377);
+  
+  }
+
+
 
  /* ICON */
 

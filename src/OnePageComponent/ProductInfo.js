@@ -132,7 +132,7 @@ function ProductInfo() {
       <Container >
         <h1 className='heading'>OUR PRODUCTS</h1>
         <div className='cardbx'>
-          {posts?.slice(0, 6).map((item, index) => (
+          {posts?.map((item, index) => (
             <div className='card' key={index}>
               <div className='product-card-box'>
                 <div className='product-card-img'>
