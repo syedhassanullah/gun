@@ -1,5 +1,16 @@
 const mongoose = require('mongoose')
 require('dotenv').config();
+
+//Schema Section-----------------------
+const contactd = require('./BDSRC/MODEL/Contact');
+const productd = require('./BDSRC/MODEL/Product');
+const User = require('./BDSRC/MODEL/User');
+
+//DATABASE Connection------------------
+const dbconnection = require('./BDSRC/DATABASE/DB');
+
+const bcrypt = require('bcryptjs');
+
 const port = 8000;
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -11,36 +22,15 @@ app.use(cors({ origin: "http://localhost:3000" }));
 app.use(bodyParser.json());
 
 
-
-
-//Database connection
-const dbUri = process.env.MONGO_URI;
-
-mongoose.connect(dbUri, {
-    ssl: true
-})
-    .then(() => console.log('MongoDB connected successfully'))
-    .catch(err => console.error('MongoDB connection error:', err));
-
-//Schema Section-----------------------
-const contectSchema = new mongoose.Schema({
-    fname: String,
-    lname: String,
-    contact: String,
-    message: String,
+dbconnection.on('connected' , ()=>{
+    console.log('now is connected finaly')
 })
 
-const contactd = mongoose.model('Contact', contectSchema);
+
+
+
 ////////////-----------------------
-const productSchema = new mongoose.Schema({
-    image: String,
-    productId: String,
-    productTitle: String,
-    description: String,
-    price: String
-})
 
-const productd = mongoose.model('Product', productSchema)
 
 
 
@@ -50,6 +40,9 @@ const productd = mongoose.model('Product', productSchema)
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
+
+
+
 //contact api------
 app.post('/api/contact1', async (req, res) => {
     try {
@@ -115,6 +108,156 @@ app.get('/api/product', async (req, res) => {
         res.status(500).json({ message: 'Error saving data', error: err });
     }
 })
+
+
+//USERAPI---------------------------------
+
+app.post("/api/register", async (req,res) => {
+    
+    const { email, password } = req.body;
+    // const uname = 'hassan'
+    // const password = 'hassan123'
+
+    if(!email || !password){
+        return res.status(422).send({
+            message:"field is required"
+        });
+    }
+
+    try{
+        const userExist = await User.findOne({email : email});
+
+
+        if (userExist){
+            return res.status(422).send({
+                error:"user is already exist"
+            });
+        }
+
+        // const salt = bcrypt.genSaltSync(saltRound);
+        // const hash = bcrypt.hashSync(password, salt);
+
+        const result = new User({
+            email : email,
+            password : password,
+
+        });
+        // bycipt password here from schema 
+        const userregister = await result.save();
+
+        if (userregister){
+            res.send({
+                status:200,
+                message: "signup successfully",
+            });
+        }
+
+    } catch (error){
+        console.log(error)
+    }
+
+
+    // let User = new UserSchema(req.body)
+    // let result = await User.save();
+    // res.send(result) ;
+});
+
+
+app.post("/api/update-password", async (req, res) => {
+    const { email, currentPassword, newPassword } = req.body;
+
+    if (!email || !currentPassword || !newPassword) {
+        return res.status(422).send({
+            message: "Email, current password, and new password are required"
+        });
+    }
+
+    try {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).send({
+                message: "User not found"
+            });
+        }
+
+        // Compare the current password with the hashed password in the database
+        const isMatch = await bcrypt.compare(currentPassword, user.password);
+
+        if (!isMatch) {
+            return res.status(401).send({
+                message: "Current password is incorrect"
+            });
+        }
+
+        // Hash the new password before saving
+        const salt = await bcrypt.genSalt(10); // You can adjust the salt rounds as needed
+        const hashedNewPassword = await bcrypt.hash(newPassword, salt);
+
+        // Update the user's password
+        user.password = hashedNewPassword;
+        await user.save();
+
+        res.send({
+            status: 200,
+            message: "Password updated successfully"
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({
+            message: "Server error"
+        });
+    }
+});
+
+
+
+app.post("/api/signin", async (req, res) => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(422).send({
+            message: "Email and password are required"
+        });
+    }
+
+    try {
+        const user = await User.findOne({ email: email });
+
+        if (!user) {
+            return res.status(401).send({
+                message: "Invalid credentials"
+            });
+        }
+
+        // Compare the entered password with the hashed password in the database
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
+            return res.status(401).send({
+                message: "Invalid credentials"
+            });
+        }
+
+        // If login is successful, you can send a success response
+        res.send({
+            status: 200,
+            message: "Login successful",
+            user: {
+                email: user.email,
+                // You can send other user details if needed
+            }
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({
+            message: "Server error"
+        });
+    }
+});
+
+
+
 
 app.listen(port, () => {
     console.log(`server is run port  ${port}`)

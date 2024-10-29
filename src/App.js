@@ -16,6 +16,8 @@ import AdminDash from './AdminPanel/AdminComponent/AdminDash';
 import ProductInfo from './OnePageComponent/ProductInfo';
 import AddCart from './OnePageComponent/AddCart'
 import ListedProduct from './AdminPanel/AdminComponent/ListedProduct';
+import { AuthProvider } from './AuthContext';
+import ProtectedRoute from './protectRout';
 
 // import Server from './Server.js';
 
@@ -57,6 +59,7 @@ function App() {
   }, []); // Empty dependency array ensures this effect runs only once
 
   return (
+    <AuthProvider>
     <div className="helo">
       {showSpinner ? (
         <div className="spinner-container App">
@@ -64,6 +67,7 @@ function App() {
           <h1 style={{ fontFamily: "'Orbitron', sans-serif", fontSize: '30px', fontWeight: '600' }}>Loading...</h1>
         </div>
       ) : (
+        
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -79,15 +83,16 @@ function App() {
             <Route path="adminlogin" element={<AdminLogin/>} />
             <Route path="admin" element={<AdminIndex />}>
             <Route index element={<Navigate to="Index" replace />} />
-              <Route path='Index' element={<AdminDash/>} />
-              <Route path="product-listing" element={<AdminProduct />} />
-              <Route path="product2" element={<AdminProduct2 />} />
-              <Route path='listed-product' element={<ListedProduct/>}/>
+              <ProtectedRoute path='Index' element={<AdminDash/>} />
+              <ProtectedRoute path="product-listing" element={<AdminProduct />} />
+              <ProtectedRoute path="product2" element={<AdminProduct2 />} />
+              <ProtectedRoute path='listed-product' element={<ListedProduct/>}/>
             </Route>
           </Routes>
         </BrowserRouter>
       )}
     </div>
+    </AuthProvider>
   );
 }
 
