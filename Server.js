@@ -9,6 +9,8 @@ const User = require('./BDSRC/MODEL/User');
 //DATABASE Connection------------------
 const dbconnection = require('./BDSRC/DATABASE/DB');
 
+const jwt = require("jsonwebtoken");
+
 const bcrypt = require('bcryptjs');
 
 const port = 8000;
@@ -239,15 +241,31 @@ app.post("/api/signin", async (req, res) => {
             });
         }
 
+        if(isMatch){
+            let token = jwt.sign(
+                {
+                    email: user.email,
+                    password: isMatch.password
+                },
+                process.env.SECRET_TOKEN
+            );
+            console.log('TOKEN', token)
+
+            res.send({
+                status: 200,
+                message: "Login successful",
+                user: {
+                    email: user.email,
+                    UserId: user._id,
+                    
+                },
+                token: token
+ 
+            });
+        }
+
         // If login is successful, you can send a success response
-        res.send({
-            status: 200,
-            message: "Login successful",
-            user: {
-                email: user.email,
-                // You can send other user details if needed
-            }
-        });
+        
     } catch (error) {
         console.error(error);
         res.status(500).send({

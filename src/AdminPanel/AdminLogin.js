@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../AuthContext';
 
 
 
@@ -10,6 +11,9 @@ function AdminLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const {storetokenInLS} = useAuth();
+
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,6 +37,10 @@ function AdminLogin() {
       });
 
       console.log('Login successful:', response.data);
+      const res_data = await response.data;
+      console.log("get data",res_data)
+      localStorage.setItem("TOKEN",res_data.token)
+      storetokenInLS(res_data.token);
       // Handle successful login (e.g., redirect or show a success message)
       navigate('/admin')
       

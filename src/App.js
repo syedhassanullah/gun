@@ -83,10 +83,10 @@ function App() {
             <Route path="adminlogin" element={<AdminLogin/>} />
             <Route path="admin" element={<AdminIndex />}>
             <Route index element={<Navigate to="Index" replace />} />
-              <ProtectedRoute path='Index' element={<AdminDash/>} />
-              <ProtectedRoute path="product-listing" element={<AdminProduct />} />
-              <ProtectedRoute path="product2" element={<AdminProduct2 />} />
-              <ProtectedRoute path='listed-product' element={<ListedProduct/>}/>
+              <Route path='Index' element={<AdminDash/>} />
+              <Route path="product-listing" element={<AdminProduct />} />
+              <Route path="product2" element={<AdminProduct2 />} />
+              <Route path='listed-product' element={<ListedProduct/>}/>
             </Route>
           </Routes>
         </BrowserRouter>

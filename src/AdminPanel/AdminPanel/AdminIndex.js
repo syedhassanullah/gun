@@ -24,11 +24,12 @@ const AdminIndex = () => {
                 <Sidebar onToggleSidebar={handleToggleSidebar} click={disableSideBar} />
             </div>
             <div className='main'>
-                
                 <div className='header1'>
-                    <Main />
-                </div>
+            <Main />
+            </div>
                 <div className='main-content'>
+      
+                    
                 <Container fluid>
                     <Outlet />
                     </Container>
