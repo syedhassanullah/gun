@@ -11,7 +11,7 @@ const AdminIndex = () => {
     const handleToggleSidebar = () => {
         setShowSidebar(!showSidebar); // Toggle sidebar visibility
     };
-    const disableSideBar = () =>{
+    const disableSideBar = () => {
         setShowSidebar(false);
     };
 
@@ -20,18 +20,18 @@ const AdminIndex = () => {
     return (
         <div className='adminindex'>
             <div className={`sidebar-wrapper ${showSidebar ? 'active' : ''}`}>
-          
+
                 <Sidebar onToggleSidebar={handleToggleSidebar} click={disableSideBar} />
             </div>
             <div className='main'>
                 <div className='header1'>
-            <Main />
-            </div>
+                    <Main />
+                </div>
                 <div className='main-content'>
-      
-                    
-                <Container fluid>
-                    <Outlet />
+
+
+                    <Container fluid>
+                        <Outlet />
                     </Container>
                 </div>
             </div>
