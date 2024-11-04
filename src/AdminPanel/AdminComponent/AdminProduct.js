@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
+import { toast } from 'react-toastify';
 
 function AdminProduct() {
   const [image, setImage] = useState(null);
@@ -11,6 +12,8 @@ function AdminProduct() {
     description: '',
     price: ''
   });
+
+
 
   const handleChange = (e) => {
     if (e.target.files) {
@@ -29,6 +32,12 @@ function AdminProduct() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const { productId, productTitle, description, price } = formData;
+    if (!productId || !productTitle || !description || !price || !image) {
+      toast.warning("Please fill in all fields and select an image.", {
+      });
+      return;
+    }
     const data = new FormData();
     data.append("image", image);
     data.append("productId", formData.productId);
@@ -36,13 +45,21 @@ function AdminProduct() {
     data.append("description", formData.description);
     data.append("price", formData.price);
 
+    
+    
     try {
       const result = await axios.post("http://localhost:8000/api/product", data, {
         headers: { "Content-Type": "multipart/form-data" }
       });
       console.log(result);
+      toast.success("Product Successfully Listed",{
+        theme: "colored",
+      })
     } catch (error) {
       console.error('Error submitting the form:', error);
+      toast.error("Some Thing is wrong",{
+        theme: "colored",
+      })
     }
   };
   return (

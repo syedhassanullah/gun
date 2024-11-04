@@ -17,7 +17,9 @@ import ProductInfo from './OnePageComponent/ProductInfo';
 import AddCart from './OnePageComponent/AddCart'
 import ListedProduct from './AdminPanel/AdminComponent/ListedProduct';
 import { AuthProvider } from './AuthContext';
-import ProtectedRoute from './protectRout';
+// import ProtectedRoute from './protectRout';
+import AdminLogout from './AdminPanel/AdminLogout';
+import ProtectedRoute from './Component/ProtectedRoute';
 
 // import Server from './Server.js';
 
@@ -60,38 +62,39 @@ function App() {
 
   return (
     <AuthProvider>
-    <div className="helo">
-      {showSpinner ? (
-        <div className="spinner-container App">
-          <Spinner animation="grow" variant='light' />
-          <h1 style={{ fontFamily: "'Orbitron', sans-serif", fontSize: '30px', fontWeight: '600' }}>Loading...</h1>
-        </div>
-      ) : (
-        
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            
-            <Route path="/about"  element={<About />} />
-            <Route path="*" element={<NotFound />} />
-            <Route path="/gellary" element={<Gallery />} />
-            <Route path="/service" element={<Service/>} />
-            <Route path="/product" element={<Product />} />
-            <Route path="/productDetals" element={<ProductInfo/>} />
-            <Route path="/addcart/:cardid" element={<AddCart/>} />
-            <Route path="404" element={<NotFound />} />
-            <Route path="adminlogin" element={<AdminLogin/>} />
-            <Route path="admin" element={<AdminIndex />}>
-            <Route index element={<Navigate to="Index" replace />} />
-              <Route path='Index' element={<AdminDash/>} />
-              <Route path="product-listing" element={<AdminProduct />} />
-              <Route path="product2" element={<AdminProduct2 />} />
-              <Route path='listed-product' element={<ListedProduct/>}/>
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      )}
-    </div>
+      <div className="helo">
+        {showSpinner ? (
+          <div className="spinner-container App">
+            <Spinner animation="grow" variant='light' />
+            <h1 style={{ fontFamily: "'Orbitron', sans-serif", fontSize: '30px', fontWeight: '600' }}>Loading...</h1>
+          </div>
+        ) : (
+
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+
+              <Route path="/about" element={<About />} />
+              <Route path="*" element={<NotFound />} />
+              <Route path="/gellary" element={<Gallery />} />
+              <Route path="/service" element={<Service />} />
+              <Route path="/product" element={<Product />} />
+              <Route path="/productDetals" element={<ProductInfo />} />
+              <Route path="/addcart/:cardid" element={<AddCart />} />
+              <Route path="404" element={<NotFound />} />
+              <Route path="adminlogin" element={<AdminLogin />} />
+              <Route path="logout" element={<AdminLogout />} />
+              <Route path="/admin" element={<ProtectedRoute><AdminIndex /></ProtectedRoute>}>
+                <Route index element={<Navigate to="Index" replace />} />
+                <Route path='Index' element={<AdminDash />} />
+                <Route path="product-listing" element={<AdminProduct />} />
+                <Route path="product2" element={<AdminProduct2 />} />
+                <Route path='listed-product' element={<ListedProduct />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        )}
+      </div>
     </AuthProvider>
   );
 }

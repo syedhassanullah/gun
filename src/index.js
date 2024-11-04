@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { AuthProvider } from './AuthContext';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -11,6 +13,8 @@ root.render(
   <AuthProvider>
     <React.StrictMode>
       <App />
+      <ToastContainer
+      />
     </React.StrictMode>
   </AuthProvider>
 

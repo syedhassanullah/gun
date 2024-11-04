@@ -154,7 +154,7 @@ body::-webkit-scrollbar-track {
 
 .main .main-content{
   overflow-y: scroll;
-  height: 100vh;
+  height: 80vh;
 }
 .main-content::-webkit-scrollbar {
   width: 3px;
