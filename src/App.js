@@ -19,7 +19,7 @@ import ListedProduct from './AdminPanel/AdminComponent/ListedProduct';
 import { AuthProvider } from './AuthContext';
 // import ProtectedRoute from './protectRout';
 import AdminLogout from './AdminPanel/AdminLogout';
-import ProtectedRoute from './Component/ProtectedRoute';
+import ProtectedRoute from './ProtectedRoute';
 
 // import Server from './Server.js';
 
