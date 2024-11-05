@@ -65,7 +65,7 @@ function AdminProduct() {
   return (
     <>
   
-        <div className="admin-product">
+        <div className="menu-section">
           <h1>PRODUCTS DETAIL</h1>
         
         <div>

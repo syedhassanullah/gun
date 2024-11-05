@@ -248,6 +248,9 @@ app.post("/api/signin", async (req, res) => {
                     password: isMatch.password
                 },
                 process.env.SECRET_TOKEN
+                {
+                    expiresIn: "1d",
+                }
             );
             console.log('TOKEN', token)
 

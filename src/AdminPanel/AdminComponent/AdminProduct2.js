@@ -2,7 +2,7 @@ import React from 'react'
 
 const AdminProduct2 = () => {
   return (
-    <div>
+    <div className='menu-section'>
       <h1>product2</h1>
     </div>
   )

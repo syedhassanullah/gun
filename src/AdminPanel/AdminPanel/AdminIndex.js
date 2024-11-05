@@ -25,11 +25,11 @@ const AdminIndex = () => {
             </div>
             <div className='main'>
                 <div className='header1'>
-                    <Main />
+                    <Container fluid>
+                        <Main />
+                    </Container>
                 </div>
                 <div className='main-content'>
-
-
                     <Container fluid>
                         <Outlet />
                     </Container>

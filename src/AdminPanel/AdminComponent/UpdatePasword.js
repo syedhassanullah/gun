@@ -16,7 +16,7 @@ const UpdatePasword = () => {
 
   return (
     <div>
-      <div className='main-Button' onClick={handleShow} style={{margin:'0px'}}>
+      <div className='main-small-button' onClick={handleShow} style={{margin:'0px',width:"auto",padding:'5px 10px'}}>
                     Update Password
         </div>
 
