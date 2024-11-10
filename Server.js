@@ -20,7 +20,7 @@ const cors = require('cors');
 const app = express();
 
 const path = require('path')
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin: "http://localhost:8090" }));
 app.use(bodyParser.json());
 
 
@@ -247,7 +247,7 @@ app.post("/api/signin", async (req, res) => {
                     email: user.email,
                     password: isMatch.password
                 },
-                process.env.SECRET_TOKEN
+                process.env.SECRET_TOKEN,
                 {
                     expiresIn: "1d",
                 }

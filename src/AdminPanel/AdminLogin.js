@@ -4,6 +4,7 @@
   import 'bootstrap/dist/css/bootstrap.min.css';
   import { useNavigate } from 'react-router-dom';
   import { useAuth } from '../AuthContext';
+  import { toast } from 'react-toastify';
 
 
 
@@ -40,6 +41,9 @@
         const res_data = await response.data;
         console.log("get data",res_data)
         storetokenInLS(res_data.token);
+        toast.success(`${response.message} || Login`,{
+          theme:"colored",
+        });
         // Handle successful login (e.g., redirect or show a success message)
         navigate('/admin')
         
@@ -47,8 +51,10 @@
         if (error.response) {
           console.error('Login failed:', error.response.data);
           // Handle login error (e.g., show an error message)
+          toast.warning(`${error.message}`)
         } else {
           console.error('Error during login:', error.message);
+          toast.warning(`${error.message}`)
         }
       }
     };

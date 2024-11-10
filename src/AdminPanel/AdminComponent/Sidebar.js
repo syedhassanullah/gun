@@ -21,9 +21,9 @@ const Sidebar = ({ onToggleSidebar, click }) => {
                 <div className="link">
                     <Nav.Link as={Link} onClick={click} to="/admin">Home</Nav.Link>
                     <Nav.Link as={Link} onClick={click} to="/admin/product-listing">Product Listing</Nav.Link>
-                    <Nav.Link as={Link} onClick={click} to="/admin/product2">Orders</Nav.Link>
                     <Nav.Link as={Link} onClick={click} to="/admin/listed-product">Listed-Product</Nav.Link>
-
+                    <Nav.Link as={Link} onClick={click} to="/admin/orders">Orders</Nav.Link>
+                    <Nav.Link as={Link} onClick={click} to="/admin/contacts">Contacts</Nav.Link>
 
                 </div>
             </div>

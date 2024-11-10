@@ -10,7 +10,6 @@ import Gallery from './Component/Gallery';
 import Service from './Component/Service';
 import AdminIndex from './AdminPanel/AdminPanel/AdminIndex';
 import AdminProduct from './AdminPanel/AdminComponent/AdminProduct';
-import AdminProduct2 from './AdminPanel/AdminComponent/AdminProduct2';
 import AdminLogin from './AdminPanel/AdminLogin';
 import AdminDash from './AdminPanel/AdminComponent/AdminDash';
 import ProductInfo from './OnePageComponent/ProductInfo';
@@ -20,6 +19,8 @@ import { AuthProvider } from './AuthContext';
 // import ProtectedRoute from './protectRout';
 import AdminLogout from './AdminPanel/AdminLogout';
 import ProtectedRoute from './ProtectedRoute';
+import Order from './AdminPanel/AdminComponent/Order';
+import Contacts from './AdminPanel/AdminComponent/Contacts';
 
 // import Server from './Server.js';
 
@@ -88,8 +89,9 @@ function App() {
                 <Route index element={<Navigate to="Index" replace />} />
                 <Route path='Index' element={<AdminDash />} />
                 <Route path="product-listing" element={<AdminProduct />} />
-                <Route path="product2" element={<AdminProduct2 />} />
+                <Route path="orders" element={<Order />} />
                 <Route path='listed-product' element={<ListedProduct />} />
+                <Route path='contacts' element={<Contacts />} />
               </Route>
             </Routes>
           </BrowserRouter>

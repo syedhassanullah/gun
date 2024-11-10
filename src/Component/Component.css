@@ -45,13 +45,14 @@
      top: 0;
      margin: 10px 25px;
      border-radius: 3px;
+     height: 100px;
 
  }
 
  .nav-toggle{
     padding: 0px 10px;
-    margin: 10px;
-    background-color: #ffffff !important;
+    margin-left: 20px !important;
+    background-color:transparent !important;
 
  }
 
@@ -609,6 +610,17 @@
      .gallery-top .pic{
         padding: 0px 0px;
     }
+    .navbar {
+        padding: 6px 0;
+        background-color: #000000b0;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.37);
+        backdrop-filter: blur(8px);
+        top: 0;
+        margin: 0px 0px;
+        border-radius: 0px;
+        height: auto;
+    }
+   
  }
  @media (max-width: 750px) {
     .hhero{
