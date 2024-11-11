@@ -56,9 +56,10 @@ function Order() {
               {posts.map((item, index) => (
                 <Row className='Row' key={index}>
                   <Col xs={1} className='p-id'>{item.productId}</Col>
-                  <Col xs={3} className='p-title'>{item.productTitle}</Col>
-                  <Col xs={5} className='p-description'>{item.description}</Col>
-                  <Col xs={2} className='p-price'>200</Col>
+                  <Col xs={2} className='p-title'>{item.productTitle}</Col>
+                  <Col xs={3} className='p-description'>{item.description}</Col>
+                  <Col xs={3} className='p-price'>200</Col>
+                  <Col xs={2} className='p-description' >{item.description}</Col>
                   <Col xs={1} style={{ textAlign: 'center', display: 'flex', alignItems: 'center' }}>
                     <div className='main-small-button' style={{ padding: '0px' }} onClick={()=>handleShow(item)}>
                       View
@@ -105,12 +106,9 @@ function Order() {
             )}
               </Modal.Body>
               <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  Close
-                </Button>
-                <Button variant="primary" onClick={handleClose}>
-                  Save Changes
-                </Button>
+              <div variant="secondary" className='main-small-button' onClick={handleClose}>
+                Close
+              </div>
               </Modal.Footer>
             </Modal>
   

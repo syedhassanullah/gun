@@ -8,7 +8,7 @@ import '../Component/Component.css';
 import Axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTiktok, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-
+import { toast } from 'react-toastify';
 
 
 
@@ -43,8 +43,10 @@ const Contact = () => {
       message: message.current.value
     }
 
-    if(detail === ''){
-      alert('try')
+    if (!firstname.current.value || !lastname.current.value || !contact.current.value || !message.current.value) {
+      toast.warning('Please fill in all the fields.',{
+  
+      });
     }else{
 
 
@@ -53,25 +55,23 @@ const Contact = () => {
         console.log('Response:', response.data);
  
 
-        alert( "send successfully");
+        toast.success("Data Send Successfully");
       })
       .catch(error => {
         if (error.response) {
           // The request was made and the server responded with a status code
-          console.error('Error Response:', error.response.data);
-          console.error('Error Status:', error.response.status);
-          console.error('Error Headers:', error.response.headers);
+          toast.error(`${error.message}`);
         } else if (error.request) {
           // The request was made but no response was received
-          console.error('Error Request:', error.request);
+          toast.error(`${error.message}`);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.error('Error Message:', error.message);
+          toast.error(`${error.message}`);
         }
         alert("Please resend");
       });
-
     }
+
 
   }
   return (
@@ -101,7 +101,7 @@ const Contact = () => {
               <Row className='cinput'>
                 <Form.Group as={Col} >
                   <Form.Label>What's App Number</Form.Label>
-                  <Form.Control type="text" placeholder="number" ref={contact} className='custom-input'/>
+                  <Form.Control type="number" placeholder="number" ref={contact} className='custom-input'/>
                 </Form.Group>
               </Row>
               

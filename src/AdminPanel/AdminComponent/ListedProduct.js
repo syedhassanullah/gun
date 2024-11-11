@@ -73,21 +73,7 @@ const ListedProduct = () => {
               </Row>
 
             ))}
-            <Row className='Row'>
-                <Col xs={1} className='p-id'>456</Col>
-                <Col xs={3} className='p-title'>HASSAN</Col>
-                <Col xs={5} className='p-description'>sklfjasklkavk;</Col>
-                <Col xs={2} className='p-price'>200</Col>
-                <Col xs={1} style={{ textAlign: 'center', display: 'flex', alignItems: 'center' }}>
-                  <div className='main-small-button' style={{ padding: '0px' }} onClick={()=>handleShow()}>
-                    View
-                  </div>
-
-
-                </Col>
-
-
-              </Row>
+    
           </div>
 
           <Modal
@@ -107,12 +93,12 @@ const ListedProduct = () => {
           )}
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
+              <div variant="secondary" className='main-small-button' onClick={handleClose}>
                 Close
-              </Button>
-              <Button variant="primary" onClick={handleClose}>
+              </div>
+              {/* <div variant="primary" className='main-small-button'  onClick={handleClose} style={{width:'150px'}}>
                 Save Changes
-              </Button>
+              </div> */}
             </Modal.Footer>
           </Modal>
 

@@ -51,7 +51,8 @@ app.post('/api/contact1', async (req, res) => {
         const { fname, lname, contact, message } = req.body;
         const newContact = new contactd({ fname, lname, contact, message,}); // Use the correct model name
         await newContact.save();
-        res.status(201).json({ message: 'Data saved successfully', data: newContact });
+        res.status(201).json({ message: 'Data Send Successfully', data: newContact });
+        console.log(newContact)
     } catch (err) {
         res.status(500).json({ message: 'Error saving data', error: err });
     }

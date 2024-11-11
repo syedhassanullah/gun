@@ -60,7 +60,7 @@ export default function Contacts() {
                   <Row className='Row' key={index}>
                     <Col xs={2} className='p-id'>{item.fname}</Col>
                     <Col xs={2} className='p-title'>{item.lname}</Col>
-                    <Col xs={2} className='p-price'>{item.Contact}</Col>
+                    <Col xs={2} className='p-price'>{item.contact}</Col>
                     <Col xs={4} className='p-description'>{item.message}</Col>
                     <Col xs={2} style={{ textAlign: 'center', display: 'flex', alignItems: 'center' }}>
                       <div className='main-small-button' style={{ padding: '0px' }} onClick={()=>handleShow(item)}>
@@ -74,21 +74,7 @@ export default function Contacts() {
                   </Row>
     
                 ))}
-                <Row className='Row'>
-                    <Col xs={1} className='p-id'>456</Col>
-                    <Col xs={3} className='p-title'>HASSAN</Col>
-                    <Col xs={5} className='p-description'>sklfjasklkavk;</Col>
-                    <Col xs={2} className='p-price'>200</Col>
-                    <Col xs={1} style={{ textAlign: 'center', display: 'flex', alignItems: 'center' }}>
-                      <div className='main-small-button' style={{ padding: '0px' }} onClick={()=>handleShow()}>
-                        View
-                      </div>
-    
-    
-                    </Col>
-    
-    
-                  </Row>
+      
               </div>
     
               <Modal
@@ -101,19 +87,16 @@ export default function Contacts() {
                 <Modal.Body>
                 {selectedProduct ? (
                 <div className='p-modal'>
-                  {selectedProduct.productTitle}
+                  {selectedProduct.contact}
                 </div>
               ) : (
                 <p>Loading...</p>
               )}
                 </Modal.Body>
                 <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose}>
-                    Close
-                  </Button>
-                  <Button variant="primary" onClick={handleClose}>
-                    Save Changes
-                  </Button>
+                <div variant="secondary" className='main-small-button' onClick={handleClose}>
+                Close
+              </div>
                 </Modal.Footer>
               </Modal>
     

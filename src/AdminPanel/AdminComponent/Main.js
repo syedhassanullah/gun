@@ -9,7 +9,7 @@ const Main = () => {
         <h1>GUNS-<span>HOLSTER</span>.COM</h1>
         <div className='main-in'style={{ display: 'flex ', alignItems: 'center ' }}>
         <UpdatePasword />
-          <Link to='/logout' className='main-small-button' style={{margin:'0px',marginLeft:"10px"}}>
+          <Link to='/logout' className='main-small-button' style={{margin:'0px',marginLeft:"10px",textDecoration:'none',}}>
             Logout
           </Link>
          

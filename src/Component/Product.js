@@ -97,13 +97,12 @@ export default function Product() {
 
                   <Modal show={show1} onHide={handleClose} centered size="lg">
                     <Modal.Header closeButton style={{display:'flex', msFlexDirection:'column'}}>
-                      <Modal.Title>{selectedProduct.productTitle}</Modal.Title>
-                      <h4>Cash On Delivery</h4>
+                      <Modal.Title>Cash On Delivery</Modal.Title>
                     </Modal.Header>
                     <div>
                       
-                    <Modal.Body  style={{display:'flex', flexWrap:'wrap'}}>
-                    <div style={{background:'black',width:'50%'}}></div>
+                    <Modal.Body >
+                  
                       <Form className='main-form'>
                         <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
                           <Form.Label>Your Full Name</Form.Label>
@@ -147,12 +146,12 @@ export default function Product() {
                     </Modal.Body>
                     </div>
                     <Modal.Footer>
-                      <Button variant="secondary" onClick={handleClose}>
+                      <div variant="secondary" className='main-Button'style={{width:'110px',}} onClick={handleClose}>
                         Close
-                      </Button>
-                      <Button variant="primary" onClick={handleClose}>
+                      </div>
+                      <div variant="primary"className='main-Button' onClick={handleClose}>
                         Save Changes
-                      </Button>
+                      </div>
                     </Modal.Footer>
                   </Modal>
                 </div>

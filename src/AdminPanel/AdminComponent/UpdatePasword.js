@@ -61,10 +61,10 @@ const UpdatePasword = () => {
                     </Modal.Body>
                     </div>
                     <Modal.Footer>
-                      <div variant="secondary" onClick={handleClose} className='main-Button' style={{width:'70px'}}>
+                      <div variant="secondary" onClick={handleClose} className='main-small-button' style={{width:'70px'}}>
                         Close
                       </div>
-                      <div variant="primary" onClick={handleClose}className='main-Button' style={{width:'150px' }}>
+                      <div variant="primary" onClick={handleClose}className='main-small-button' style={{width:'150px' }}>
                         Save Changes
                       </div>
                     </Modal.Footer>
