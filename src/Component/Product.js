@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-
+import axios  from 'axios';
+import { toast } from 'react-toastify';
 
 
 export default function Product() {
@@ -16,6 +17,12 @@ export default function Product() {
   const [show1, setShow1] = useState(false);
   const handleClose = () => setShow1(false);
   const handleShow = () => setShow1(true);
+  const [formData, setFormData] = useState({
+    fullname: '',
+    number: '',
+    address: '',
+    landmark: ''
+  })
 
 
 
@@ -28,7 +35,6 @@ export default function Product() {
       const res = await fetch("http://localhost:8000/api/product");
       const data = await res.json();
       setPosts(data.data);
-      console.log(data.data);
 
     } catch (error) {
       console.log(error);
@@ -38,6 +44,49 @@ export default function Product() {
   const openModal = (item) => {
     setShow(true)
     setSelectedProduct(item)
+
+   
+  }
+
+  const ConfirmPurchaseChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const ConfirmPurchase = async (e)=>{
+      e.preventDefault();
+
+    const payload = {
+      productId: selectedProduct.productId,
+      productTitle: selectedProduct.productTitle,
+      price: selectedProduct.price,
+      productImage: selectedProduct.image,
+      ...formData
+    }
+
+    try{
+      const res =await axios.post('http://localhost:8000/api/order',payload, {
+        headers: {
+          'Content-Type': 'application/json',
+        },  
+      })
+
+      console.log('Data Send :', res.data);
+      const res_data = await res.data;
+      toast.success(`Successful`,{});
+    } catch (error) {
+      if (error.response) {
+        toast.error("Some Thing Is Wrong")
+      } else {
+        toast.error(`${error.message}`)
+      }
+    }
+
+    console.log(payload)
+
   }
 
   return (
@@ -96,60 +145,68 @@ export default function Product() {
                   </div>
 
                   <Modal show={show1} onHide={handleClose} centered size="lg">
-                    <Modal.Header closeButton style={{display:'flex', msFlexDirection:'column'}}>
+                    <Modal.Header closeButton style={{ display: 'flex', msFlexDirection: 'column' }}>
                       <Modal.Title>Cash On Delivery</Modal.Title>
                     </Modal.Header>
                     <div>
-                      
-                    <Modal.Body >
-                  
-                      <Form className='main-form'>
-                        <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
-                          <Form.Label>Your Full Name</Form.Label>
-                          <Form.Control
-                            className='main-custom-input'
-                            placeholder="full name "
-                          />
-                        </Form.Group>
-                        <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
-                          <Form.Label>What's App Number / Contact Number</Form.Label>
-                          <Form.Control
-                            className='main-custom-input'
-                            placeholder="number"
-                            maxLength={20}
-                          />
-                        </Form.Group>
-                        <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
-                          <Form.Label>Address</Form.Label>
-                          <Form.Control
-                            className='main-custom-input'
-                            as="textarea"
-                            placeholder="House# Area Town City . . . ."
-                            rows={3}
-                          />
-                        </Form.Group>
-                        <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
-                          <Form.Label>Nearest Landmark</Form.Label>
-                          <Form.Control
-                            className='main-custom-input'
-                            placeholder="like shop / masjid / School /etc"
-                          />
-                        </Form.Group>
-                        {/* <Form.Group
+
+                      <Modal.Body >
+
+                        <Form className='main-form'>
+                          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
+                            <Form.Label>Your Full Name</Form.Label>
+                            <Form.Control
+                              className='main-custom-input'
+                              onChange={ConfirmPurchaseChange}
+                              placeholder="full name "
+                              name="fullname"
+                            />
+                          </Form.Group>
+                          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
+                            <Form.Label>What's App Number / Contact Number</Form.Label>
+                            <Form.Control
+                              className='main-custom-input'
+                              placeholder="number"
+                              onChange={ConfirmPurchaseChange}
+                              maxLength={20}
+                              name="number"
+                            />
+                          </Form.Group>
+                          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
+                            <Form.Label>Address</Form.Label>
+                            <Form.Control
+                              className='main-custom-input'
+                              onChange={ConfirmPurchaseChange}
+                              as="textarea"
+                              placeholder="House# Area Town City . . . ."
+                              rows={3}
+                              name="address"
+                            />
+                          </Form.Group>
+                          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
+                            <Form.Label>Nearest Landmark</Form.Label>
+                            <Form.Control
+                              className='main-custom-input'
+                              placeholder="like shop / masjid / School /etc"
+                              name="landmark"
+                              onChange={ConfirmPurchaseChange}
+                            />
+                          </Form.Group>
+                          {/* <Form.Group
                           className="mb-3"
                           controlId="exampleForm.ControlTextarea1"
                         >
                           <Form.Label>Example textarea</Form.Label>
                           <Form.Control as="textarea" className='main-custom-input' rows={3} />
                         </Form.Group> */}
-                      </Form>
-                    </Modal.Body>
+                        </Form>
+                      </Modal.Body>
                     </div>
                     <Modal.Footer>
-                      <div variant="secondary" className='main-Button'style={{width:'110px',}} onClick={handleClose}>
+                      <div variant="secondary" className='main-Button' style={{ width: '110px', }} onClick={handleClose}>
                         Close
                       </div>
-                      <div variant="primary"className='main-Button' onClick={handleClose}>
+                      <div variant="primary" className='main-Button' onClick={ConfirmPurchase}>
                         Save Changes
                       </div>
                     </Modal.Footer>

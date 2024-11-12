@@ -28,6 +28,11 @@
     const handleSubmit = async (e) => {
       e.preventDefault();
 
+      if(!email || !password){
+
+        toast.warning("Please fill in all the fields.")
+        return;
+      }
       const loginData = { email, password };
 
       try {
@@ -41,15 +46,14 @@
         const res_data = await response.data;
         console.log("get data",res_data)
         storetokenInLS(res_data.token);
-        toast.success(`Login Successful`,{
-        });
+        toast.success(`Login Successful`,{});
         // Handle successful login (e.g., redirect or show a success message)
         navigate('/admin')
         
       } catch (error) {
         if (error.response) {
           // Handle login error (e.g., show an error message)
-          toast.error(`${error.message}`)
+          toast.error("Some Thing Is Wrong")
         } else {
           toast.error(`${error.message}`)
         }

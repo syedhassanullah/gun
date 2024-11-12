@@ -5,6 +5,7 @@ require('dotenv').config();
 const contactd = require('./BDSRC/MODEL/Contact');
 const productd = require('./BDSRC/MODEL/Product');
 const User = require('./BDSRC/MODEL/User');
+const ProductOrder = require('./BDSRC/MODEL/OrderDetails')
 
 //DATABASE Connection------------------
 const dbconnection = require('./BDSRC/DATABASE/DB');
@@ -24,7 +25,7 @@ app.use(cors({ origin: "http://localhost:8090" }));
 app.use(bodyParser.json());
 
 
-dbconnection.on('connected' , ()=>{
+dbconnection.on('connected', () => {
     console.log('now is connected finaly')
 })
 
@@ -49,7 +50,7 @@ app.get('/', (req, res) => {
 app.post('/api/contact1', async (req, res) => {
     try {
         const { fname, lname, contact, message } = req.body;
-        const newContact = new contactd({ fname, lname, contact, message,}); // Use the correct model name
+        const newContact = new contactd({ fname, lname, contact, message, }); // Use the correct model name
         await newContact.save();
         res.status(201).json({ message: 'Data Send Successfully', data: newContact });
         console.log(newContact)
@@ -91,10 +92,10 @@ app.post('/api/product', upload.single('image'), async (req, res) => {
     console.log(req.file)
     console.log('Received body:', req.body);
     res.send("uploaded")
-    const  {productId, productTitle, description, price } = await req.body;
+    const { productId, productTitle, description, price } = await req.body;
     const pimage = req.file.filename;
     try {
-        const newpdata = new productd({ image: pimage, productId, productTitle, description, price  })
+        const newpdata = new productd({ image: pimage, productId, productTitle, description, price })
         await newpdata.save();
     } catch (error) {
         console.error("Error saving the DATA:", error);
@@ -112,28 +113,60 @@ app.get('/api/product', async (req, res) => {
     }
 })
 
+// order API--------------
+
+app.post('/api/order', async (req, res) => {
+    try {
+        const { productId, productTitle, price, productImage, fullname, number, address, landmark } = req.body;
+        const newOrder = new ProductOrder({
+            productId,
+            productTitle,
+            price,
+            productImage,
+            fullname,
+            number,
+            address,
+            landmark,
+        })
+
+        await newOrder.save()
+        res.status(201).json({ message: 'Data Send Successfully', data: newOrder });
+    } catch(err) {
+        res.status(400).json({ message: 'Error creating order', error:err });
+    }
+
+})
+
+app.get('/api/order', async (req,res) =>{
+    try {
+        const orderdata = await ProductOrder.find();
+        res.status(200).json({ message: 'Data recived success fully ', data:orderdata })
+    } catch (err) {
+        res.status(500).json({ message: 'Error saving data', error: err });
+    }
+})
 
 //USERAPI---------------------------------
 
-app.post("/api/register", async (req,res) => {
-    
+app.post("/api/register", async (req, res) => {
+
     const { email, password } = req.body;
     // const uname = 'hassan'
     // const password = 'hassan123'
 
-    if(!email || !password){
+    if (!email || !password) {
         return res.status(422).send({
-            message:"field is required"
+            message: "field is required"
         });
     }
 
-    try{
-        const userExist = await User.findOne({email : email});
+    try {
+        const userExist = await User.findOne({ email: email });
 
 
-        if (userExist){
+        if (userExist) {
             return res.status(422).send({
-                error:"user is already exist"
+                error: "user is already exist"
             });
         }
 
@@ -141,21 +174,21 @@ app.post("/api/register", async (req,res) => {
         // const hash = bcrypt.hashSync(password, salt);
 
         const result = new User({
-            email : email,
-            password : password,
+            email: email,
+            password: password,
 
         });
         // bycipt password here from schema 
         const userregister = await result.save();
 
-        if (userregister){
+        if (userregister) {
             res.send({
-                status:200,
+                status: 200,
                 message: "signup successfully",
             });
         }
 
-    } catch (error){
+    } catch (error) {
         console.log(error)
     }
 
@@ -242,7 +275,7 @@ app.post("/api/signin", async (req, res) => {
             });
         }
 
-        if(isMatch){
+        if (isMatch) {
             let token = jwt.sign(
                 {
                     email: user.email,
@@ -250,7 +283,7 @@ app.post("/api/signin", async (req, res) => {
                 },
                 process.env.SECRET_TOKEN,
                 {
-                    expiresIn: "1d",
+                    expiresIn: "1m",
                 }
             );
             console.log('TOKEN', token)
@@ -261,15 +294,15 @@ app.post("/api/signin", async (req, res) => {
                 user: {
                     email: user.email,
                     UserId: user._id,
-                    
+
                 },
                 token: token
- 
+
             });
         }
 
         // If login is successful, you can send a success response
-        
+
     } catch (error) {
         console.error(error);
         res.status(500).send({
