@@ -198,7 +198,6 @@ app.post("/api/register", async (req, res) => {
     // res.send(result) ;
 });
 
-
 app.post("/api/update-password", async (req, res) => {
     const { email, currentPassword, newPassword } = req.body;
 
@@ -227,10 +226,9 @@ app.post("/api/update-password", async (req, res) => {
         }
 
         // Hash the new password before saving
-        const salt = await bcrypt.genSalt(10); // You can adjust the salt rounds as needed
-        const hashedNewPassword = await bcrypt.hash(newPassword, salt);
+        const hashedNewPassword = await bcrypt.hash(newPassword, 10);
 
-        // Update the user's password
+        // Update the user's password with the hashed new password
         user.password = hashedNewPassword;
         await user.save();
 
@@ -245,7 +243,6 @@ app.post("/api/update-password", async (req, res) => {
         });
     }
 });
-
 
 
 app.post("/api/signin", async (req, res) => {
