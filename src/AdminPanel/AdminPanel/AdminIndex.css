@@ -159,7 +159,7 @@ body::-webkit-scrollbar-track {
   height: 100vh;
 }
 .main-content::-webkit-scrollbar {
-  width: 5px;
+  width: 3px;
 }
 .main-content::-webkit-scrollbar-thumb {
   background-color:  rgb(18, 42, 0);
@@ -213,7 +213,7 @@ body::-webkit-scrollbar-track {
 
 .main-head {
  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
- background-color: #ffffff7c;
+ background-color: #ffffff;
  backdrop-filter: blur(4px);
  height: 120px;
 font-family: var(--text-heading2);
@@ -320,6 +320,15 @@ width: 100%;
   line-height: 1.7;
 }
 
+/*  */
+
+.in-img{
+}
+.modal-in{
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
 /* SiderBar -------------------------------------- */
 
 .sidebar-wrapper {

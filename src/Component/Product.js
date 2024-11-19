@@ -4,7 +4,6 @@ import './Component.css'
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios  from 'axios';
 import { toast } from 'react-toastify';
@@ -99,7 +98,7 @@ export default function Product() {
             <div className='card' key={index}>
               <div className='product-card-box'>
                 <div className='product-card-img'>
-                  <img src={require(`../uploads/${item.image}`)} alt={item.productTitle} />
+                  <img src={`http://localhost:8000/uploads/${item.image}`} alt={item.productTitle} />
                 </div>
                 <div className='product-card-text'>
                   <h4>{item.productTitle}</h4>
@@ -125,10 +124,16 @@ export default function Product() {
         <Modal.Body>
 
           {selectedProduct ? (
-            <div className='p-modal'>
+            
+              <Container>
+                <Row>
+                <div className='p-modal'>
+              <Col xs={12}  md={6}>
               <div className='p-modal-image'>
-                <img src={require(`../uploads/${selectedProduct.image}`)} alt={selectedProduct.productTitle} />
+                <img src={`http://localhost:8000/uploads/${selectedProduct.image}`} alt={selectedProduct.productTitle} />
               </div>
+              </Col>
+              <Col xs={12}  md={6}>
               <div className='p-modal-text'>
                 <h1>{selectedProduct.productTitle}</h1>
                 <div>
@@ -213,7 +218,11 @@ export default function Product() {
                   </Modal>
                 </div>
               </div>
-            </div>
+              </Col>
+              </div>
+              </Row>
+              </Container>
+            
           ) : (
             <p>Loading...</p>
           )}

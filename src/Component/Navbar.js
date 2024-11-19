@@ -27,9 +27,9 @@ const MainNavbar = () => {
                             <Nav.Link href="#gallery"><span className='navlink' >Gellary</span></Nav.Link>
                             <Nav.Link href="#service"><span className='navlink'>Services</span></Nav.Link>
                             <Nav.Link href="#product"><span className='navlink'>Products</span></Nav.Link>
-                            <Nav.Link as={Link} to='/productDetals' href='#404'><span className='navlink'>detail p</span></Nav.Link>
+                            {/* <Nav.Link as={Link} to='/productDetals' href='#404'><span className='navlink'>detail p</span></Nav.Link>
                             <Nav.Link as={Link} to='/admin' href='#admin'><span className='navlink'>admin</span></Nav.Link>
-                            <Nav.Link as={Link} to='/adminlogin' href='#login'><span className='navlink'>adminlogin</span></Nav.Link>
+                            <Nav.Link as={Link} to='/adminlogin' href='#login'><span className='navlink'>adminlogin</span></Nav.Link> */}
                         </Nav>
                         <Contact  style={{fontSize:'22px'}}/>
                     </Navbar.Collapse>

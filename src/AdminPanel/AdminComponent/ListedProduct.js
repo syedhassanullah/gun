@@ -60,20 +60,14 @@ const ListedProduct = () => {
                 <Col xs={1} className='p-id'>{item.productId}</Col>
                 <Col xs={3} className='p-title'>{item.productTitle}</Col>
                 <Col xs={4} className='p-description'>{item.description}</Col>
-                <Col xs={2} className='p-price'>200</Col>
+                <Col xs={2} className='p-price'>{item.price}</Col>
                 <Col xs={2} style={{ textAlign: 'center', display: 'flex', alignItems: 'center' }}>
                   <div className='main-small-button' style={{ padding: '0px' }} onClick={()=>handleShow(item)}>
                     View
                   </div>
-
-
                 </Col>
-
-
               </Row>
-
             ))}
-    
           </div>
 
           <Modal
@@ -81,13 +75,29 @@ const ListedProduct = () => {
             aria-labelledby="contained-modal-title-vcenter"
             centered show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>Modal heading</Modal.Title>
+              <Modal.Title><h1>Details</h1></Modal.Title>
             </Modal.Header>
             <Modal.Body>
             {selectedProduct ? (
-            <div className='p-modal'>
-              {selectedProduct.productTitle}
-            </div>
+            
+              <Row>
+                <div className='modal-in'>
+              <Col md={4}>
+             <div className='in-img'>
+                  <img src={`http://localhost:8000/uploads/${selectedProduct.image}`}  alt={selectedProduct.productTitle}/>
+              </div>
+              </Col>
+              <Col md={8}>
+              <div className='in-text'>
+                <h4>{selectedProduct.productId}</h4>
+                <h2>{selectedProduct.productTitle}</h2>
+                <p>{selectedProduct.description}</p>
+                <h2>{selectedProduct.price}</h2>
+              </div>
+              </Col>
+              </div>
+              </Row>
+            
           ) : (
             <p>Loading...</p>
           )}

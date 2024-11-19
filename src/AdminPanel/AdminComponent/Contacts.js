@@ -42,8 +42,8 @@ export default function Contacts() {
     return (
         <>
           <div className='menu-section'>
-            <h1>Listed Product</h1>
-            <h5>All Listed Product</h5>
+            <h1>Contacts</h1>
+            <h5>All Contacts</h5>
             <div className='content'>
               <div className='listed-item'>
                 <div className='head'>
