@@ -14,7 +14,7 @@ export default function About() {
   <div className='flex flex-col md:flex-row items-center justify-evenly gap-8'>
       <div className='md:w-1/2 text-left'>
         <h2 className='text-3xl font-bold mb-4'>WHO WE ARE?</h2>
-        <ul className='list-disc pl-5 space-y-2 text-gray-700'>
+        <ul className='list-disc pl-5 space-y-2 '>
           <li>Dedicated to excellence in our field.</li>
           <li>Innovation is at the core of our values.</li>
           <li>Customer satisfaction is our top priority.</li>

@@ -74,37 +74,55 @@ function Order() {
           <Modal
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
-            centered show={show} onHide={handleClose}>
+            centered show={show} onHide={handleClose}
+            className='order-info'>
             <Modal.Header closeButton>
-              <Modal.Title>Modal heading</Modal.Title>
+              <Modal.Title><h3>ORDER INFO</h3></Modal.Title>
             </Modal.Header>
             <Modal.Body>
               {selectedProduct ? (
                 <>
-                <Row>
-                  <div className='modal-in'>
-                    <Col md={4}>
-                      <div className='in-img'>
-                        <img src={`http://localhost:8000/uploads/${selectedProduct.productImage}`} alt={selectedProduct.productTitle} />
+                  <Row>
+                    <Col>
+                    <div className='buyer'>
+                      <div className='buyer-input1' >
+                      <h5>Name:</h5>
+                      <h5>Number:</h5>
+                      <h5>Address:</h5>
+                      <h5>LandMark:</h5>
                       </div>
-                    </Col>
-                    <Col md={8}>
-                      <div className='in-text'>
-                        <h4>{selectedProduct.productId}</h4>
-                        <h2>{selectedProduct.productTitle}</h2>
-                        <p>{selectedProduct.description}</p>
-                        <h2>{selectedProduct.price}</h2>
+                      <div  className='buyer-input2'>
+                      <h5>{selectedProduct.fullname}</h5>
+                      <h5>{selectedProduct.number}</h5>
+                      <h5>{selectedProduct.address}</h5>
+                      <h5>{selectedProduct.landmark}</h5>
                       </div>
+                    </div>
                     </Col>
-                  </div>
-                </Row>
-                
-                <Row>
-                <p>{selectedProduct.fullname}</p>
-                <p>{selectedProduct.number}</p>
-                <p>{selectedProduct.address}</p>
-                <p>{selectedProduct.landmark}</p>
-                </Row>
+                  </Row>
+                  <Row>
+                    <div className='modal-in'>
+                      <Col md={4}>
+                        <div className='in-img'>
+                          <img src={`http://localhost:8000/uploads/${selectedProduct.productImage}`} alt={selectedProduct.productTitle} />
+                        </div>
+                      </Col>
+                      <Col md={8}>
+                        <div className='in-text'>
+                          <div className='buyer-input1'>
+                          <h5>Product ID:</h5>
+                          <h5>Product Title:</h5>
+                          <h5>Product Price:</h5>
+                          </div>
+                          <div className='buyer-input2'>
+                          <h5>{selectedProduct.productId}</h5>
+                          <h5>{selectedProduct.productTitle}</h5>
+                          <h5>{selectedProduct.price}</h5>
+                          </div>
+                        </div>
+                      </Col>
+                    </div>
+                  </Row>
                 </>
               ) : (
                 <p>Loading...</p>

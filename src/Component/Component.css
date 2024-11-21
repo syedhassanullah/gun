@@ -22,7 +22,7 @@
   --text-color: #033b01af;
   --text-heading:  "Orbitron", sans-serif;
   --text-heading2:"Black Ops One", system-ui; 
-  --secPadding: 50px 0px;
+  --secPadding: 60px 0px;
 }
 
  /* Body styling
@@ -440,15 +440,26 @@
 /* About container styling */
 .about{
     padding: var(--secPadding);
+    background-color: #000000;
+    padding-bottom: 150px;
+    clip-path: polygon(0 0, 100% 7%, 100% 100%, 0 92%);
+}
+.about h1{
+    border-bottom:3px solid #14aa00;
 }
 .about h2{
     font-family: var(--text-heading);
-}
 
+}
+.text-left{
+    color: #fff;
+    
+}
 
 /* Gellary */
 .gallery-top{
     padding: var(--secPadding);
+
 }
 .gallery-top .pic{
     padding: 0px 70px;
