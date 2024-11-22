@@ -351,6 +351,11 @@ body::-webkit-scrollbar-track {
   padding: 10px 0px;
   overflow-x: scroll;
 }
+.buyer::-webkit-scrollbar {
+  height: 2px;
+}
+
+
 .buyer-input1{
 min-width: 7rem;
   display: flex;
@@ -365,10 +370,9 @@ min-width: 7rem;
   background-color: #15ff002d;
   padding: 3px 5px;
  display: flex;
-
 }
 .in-text{
-  overflow-x: scroll;
+
   display: flex;
 }
 .modal-in {
@@ -524,4 +528,17 @@ min-width: 7rem;
     flex-wrap: wrap;
   }
 
+  .buyer {
+    display: flex;
+    border-bottom: 3px solid #14aa00;
+    padding: 10px 0px;
+    overflow-x: scroll;
+  }
+  .buyer::-webkit-scrollbar {
+    height: 2px;
+  }
+  
+  .buyer::-webkit-scrollbar-thumb {
+    background-color: rgb(18, 42, 0);
+  }
 }

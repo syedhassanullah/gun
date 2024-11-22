@@ -50,7 +50,7 @@ const Contact = () => {
     }else{
 
 
-    Axios.post('http://localhost:8000/api/contact1', detail)
+    Axios.post('https://gunserver-wh6i0sgb.b4a.run/api/contact1', detail)
       .then(response => {
         console.log('Response:', response.data);
  

@@ -23,7 +23,7 @@ function Order() {
 
   const GetDynamicData = async () => {
     try {
-      const res = await fetch("http://localhost:8000/api/order");
+      const res = await fetch("https://gunserver-wh6i0sgb.b4a.run/api/order");
       const data = await res.json();
       setPosts(data.data);
       console.log(data.data);

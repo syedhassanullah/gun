@@ -26,7 +26,7 @@ const ListedProduct = () => {
 
   const GetDynamicData = async () => {
     try {
-      const res = await fetch("http://localhost:8000/api/product");
+      const res = await fetch("https://gunserver-wh6i0sgb.b4a.run/api/product");
       const data = await res.json();
       setPosts(data.data);
       console.log(data.data);

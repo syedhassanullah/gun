@@ -31,7 +31,7 @@ export default function Product() {
 
   const GetDynamicData = async () => {
     try {
-      const res = await fetch("http://localhost:8000/api/product");
+      const res = await fetch("https://gunserver-wh6i0sgb.b4a.run/api/product");
       const data = await res.json();
       setPosts(data.data);
 
@@ -67,7 +67,7 @@ export default function Product() {
     }
 
     try{
-      const res =await axios.post('http://localhost:8000/api/order',payload, {
+      const res =await axios.post('https://gunserver-wh6i0sgb.b4a.run/api/order',payload, {
         headers: {
           'Content-Type': 'application/json',
         },  
@@ -98,7 +98,7 @@ export default function Product() {
             <div className='card' key={index}>
               <div className='product-card-box'>
                 <div className='product-card-img'>
-                  <img src={`http://localhost:8000/uploads/${item.image}`} alt={item.productTitle} />
+                  <img src={`https://gunserver-wh6i0sgb.b4a.run/uploads/${item.image}`} alt={item.productTitle} />
                 </div>
                 <div className='product-card-text'>
                   <h4>{item.productTitle}</h4>
@@ -130,7 +130,7 @@ export default function Product() {
                 <div className='p-modal'>
               <Col xs={12}  md={6}>
               <div className='p-modal-image'>
-                <img src={`http://localhost:8000/uploads/${selectedProduct.image}`} alt={selectedProduct.productTitle} />
+                <img src={`https://gunserver-wh6i0sgb.b4a.run/uploads/${selectedProduct.image}`} alt={selectedProduct.productTitle} />
               </div>
               </Col>
               <Col xs={12}  md={6}>

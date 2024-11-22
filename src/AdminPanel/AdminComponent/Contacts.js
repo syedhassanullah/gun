@@ -27,7 +27,7 @@ export default function Contacts() {
   
     const GetDynamicData = async () => {
       try {
-        const res = await fetch("http://localhost:8000/api/contact1");
+        const res = await fetch("https://gunserver-wh6i0sgb.b4a.run/api/contact1");
         const data = await res.json();
         setPosts(data.data);
         console.log(data.data);
@@ -86,9 +86,24 @@ export default function Contacts() {
                 </Modal.Header>
                 <Modal.Body>
                 {selectedProduct ? (
-                <div className='p-modal'>
-                  {selectedProduct.contact}
-                </div>
+                  <Row>
+                    <Col>
+                    <div className='buyer'>
+                      <div className='buyer-input1'  >
+                      <h5>F-Name:</h5>
+                      <h5>L-Lame:</h5>
+                      <h5>Contact:</h5>
+                      <h5>Message:</h5>
+                      </div>
+                      <div  className='buyer-input2'>
+                      <h5>{selectedProduct.fname}</h5>
+                      <h5>{selectedProduct.lname}</h5>
+                      <h5>{selectedProduct.contact}</h5>
+                      <h5>{selectedProduct.message}</h5>
+                      </div>
+                    </div>
+                    </Col>
+                  </Row>
               ) : (
                 <p>Loading...</p>
               )}

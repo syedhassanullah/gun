@@ -48,7 +48,7 @@ function AdminProduct() {
     
     
     try {
-      const result = await axios.post("http://localhost:8000/api/product", data, {
+      const result = await axios.post("https://gunserver-wh6i0sgb.b4a.run/api/product", data, {
         headers: { "Content-Type": "multipart/form-data" }
       });
       console.log(result);
