@@ -5,12 +5,26 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import axios  from 'axios';
+import axios from 'axios';
 import { toast } from 'react-toastify';
+import image1 from "../../src/image/3.png";
+import image2 from "../../src/image/2.png";
+import image3 from "../../src/image/5.png";
+
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+
+
+
 
 
 export default function Product() {
-  const [posts, setPosts] = useState(null);
+  // const [posts, setPosts] = useState(null);
   const [show, setShow] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [show1, setShow1] = useState(false);
@@ -25,26 +39,26 @@ export default function Product() {
 
 
 
-  useEffect(() => {
-    GetDynamicData();
-  }, []);
+  // useEffect(() => {
+  //   GetDynamicData();
+  // }, []);
 
-  const GetDynamicData = async () => {
-    try {
-      const res = await fetch("https://gunserver-wh6i0sgb.b4a.run/api/product");
-      const data = await res.json();
-      setPosts(data.data);
+  // const GetDynamicData = async () => {
+  //   try {
+  //     const res = await fetch("https://gunserver-wh6i0sgb.b4a.run/api/product");
+  //     const data = await res.json();
+  //     setPosts(data.data);
 
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const openModal = (item) => {
-    setShow(true)
+    setShow('true')
     setSelectedProduct(item)
 
-   
+
   }
 
   const ConfirmPurchaseChange = (e) => {
@@ -55,38 +69,49 @@ export default function Product() {
     });
   };
 
-  const ConfirmPurchase = async (e)=>{
-      e.preventDefault();
+  const ConfirmPurchase = async (e) => {
+    e.preventDefault();
 
     const payload = {
-      productId: selectedProduct.productId,
-      productTitle: selectedProduct.productTitle,
+      productId: selectedProduct.id,
+      productTitle: selectedProduct.title,
       price: selectedProduct.price,
       productImage: selectedProduct.image,
       ...formData
     }
+    console.log(payload);
 
-    try{
-      const res =await axios.post('https://gunserver-wh6i0sgb.b4a.run/api/order',payload, {
-        headers: {
-          'Content-Type': 'application/json',
-        },  
-      })
+    // try {
+    //   const res = await axios.post('https://gunserver-wh6i0sgb.b4a.run/api/order', payload, {
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //   })
 
-      console.log('Data Send :', res.data);
-      const res_data = await res.data;
-      toast.success(`Successful`,{});
-    } catch (error) {
-      if (error.response) {
-        toast.error("Some Thing Is Wrong")
-      } else {
-        toast.error(`${error.message}`)
-      }
-    }
+    //   console.log('Data Send :', res.data);
+    //   const res_data = await res.data;
+    //   toast.success(`Successful`, {});
+    // } catch (error) {
+    //   if (error.response) {
+    //     toast.error("Some Thing Is Wrong")
+    //   } else {
+    //     toast.error(`${error.message}`)
+    //   }
+    // }
 
     console.log(payload)
 
   }
+
+  const Products = [
+    { id: '1', title: 'new', description: 'some', price: '500', image: [image1,image2,image3] },
+    { id: '2', title: 'new', description: 'some', price: '500', image: [image1,image2,image3] },
+    { id: '3', title: 'new', description: 'some', price: '500', image: [image1,image2,image3] },
+    { id: '4', title: 'new', description: 'some', price: '500', image: [image1,image2,image3] },
+    { id: '5', title: 'new', description: 'some', price: '500', image: [image1,image2,image3] },
+  ]
+
+
 
   return (
     <div id='product' className='product' >
@@ -94,20 +119,20 @@ export default function Product() {
       <Container >
         <h1 className='heading'>OUR PRODUCTS</h1>
         <div className='cardbx'>
-          {posts?.slice(0, 6).map((item, index) => (
-            <div className='card' key={index}>
+          {Products?.slice(0, 6).map((Products) => (
+            <div className='card' key={Products.id}>
               <div className='product-card-box'>
                 <div className='product-card-img'>
-                  <img src={`https://gunserver-wh6i0sgb.b4a.run/uploads/${item.image}`} alt={item.productTitle} />
+                  <img src={Products.image[0]} alt={Products.title} />
                 </div>
                 <div className='product-card-text'>
-                  <h4>{item.productTitle}</h4>
-                  <p>{item.description}</p>
+                  <h4>{Products.title}</h4>
+                  <p>{Products.description}</p>
                   <div className='product-card-price'>
                     <h6>Price</h6>
-                    <h6>{item.price}$</h6>
+                    <h6>{Products.price}$</h6>
                   </div>
-                  <div className='main-small-button' onClick={() => openModal(item)}>
+                  <div className='main-small-button' onClick={() => openModal(Products)}>
                     BUY NOW
                   </div>
                 </div>
@@ -124,105 +149,133 @@ export default function Product() {
         <Modal.Body>
 
           {selectedProduct ? (
-            
-              <Container>
-                <Row>
+
+            <Container>
+              <Row>
                 <div className='p-modal'>
-              <Col xs={12}  md={6}>
-              <div className='p-modal-image'>
-                <img src={`https://gunserver-wh6i0sgb.b4a.run/uploads/${selectedProduct.image}`} alt={selectedProduct.productTitle} />
-              </div>
-              </Col>
-              <Col xs={12}  md={6}>
-              <div className='p-modal-text'>
-                <h1>{selectedProduct.productTitle}</h1>
-                <div>
-                  <h4>Description.</h4>
-                  <p>{selectedProduct.description}</p>
-                </div>
-                <div className='p-modal-text-price'>
-                  <h2>price</h2>
-                  <h2>{selectedProduct.price}<span>PKR</span></h2>
-                </div>
-                <div className='M-Button'>
-                  <div className='main-Button' onClick={handleShow}>
-                    Confirm Purchase
-                  </div>
+                  <Col xs={12} md={6}>
+                    <div className='p-modal-image'>
+                      <Swiper
+                        spaceBetween={30}
+                        centeredSlides={true}
+                        autoplay={{
+                          delay: 2500,
+                          disableOnInteraction: false,
+                        }}
+                        pagination={{
+                          clickable:true, 
+                        }}
+                        navigation={true}s
+                        modules={[Autoplay, Navigation]}
+                        className="myswiper"
+                      >
+                         {selectedProduct.image.map((img1, index) => (
+                  <SwiperSlide key={index}>
+                    <img src={img1} alt={` ${index + 1}`} className="img-fluid" />
+                  </SwiperSlide>
+                ))}
+                      </Swiper>
+                    </div>
+                  </Col>
+                  <Col xs={12} md={6}>
+                    <div className='p-modal-text'>
+                      <h1>{selectedProduct.title}</h1>
+                      <div>
+                        <h4>Description.</h4>
+                        <p>{selectedProduct.description}</p>
+                      </div>
+                      <div className='p-modal-text-price'>
+                        <h2>price</h2>
+                        <h2>{selectedProduct.price}<span>PKR</span></h2>
+                      </div>
+                      <div className='M-Button'>
+                        <div className='main-Button' onClick={handleShow}>
+                          Confirm Purchase
+                        </div>
 
-                  <Modal show={show1} onHide={handleClose} centered size="lg">
-                    <Modal.Header closeButton style={{ display: 'flex', msFlexDirection: 'column' }}>
-                      <Modal.Title>Cash On Delivery</Modal.Title>
-                    </Modal.Header>
-                    <div>
+                        <Modal show={show1} onHide={handleClose} centered size="lg">
+                          <Modal.Header closeButton style={{ display: 'flex', msFlexDirection: 'column' }}>
+                            <Modal.Title>Cash On Delivery</Modal.Title>
+                          </Modal.Header>
+                          <div>
 
-                      <Modal.Body >
+                            <Modal.Body >
 
-                        <Form className='main-form'>
-                          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
-                            <Form.Label>Your Full Name</Form.Label>
-                            <Form.Control
-                              className='main-custom-input'
-                              onChange={ConfirmPurchaseChange}
-                              placeholder="full name "
-                              name="fullname"
-                            />
-                          </Form.Group>
-                          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
-                            <Form.Label>What's App Number / Contact Number</Form.Label>
-                            <Form.Control
-                              className='main-custom-input'
-                              placeholder="number"
-                              onChange={ConfirmPurchaseChange}
-                              maxLength={20}
-                              name="number"
-                            />
-                          </Form.Group>
-                          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
-                            <Form.Label>Address</Form.Label>
-                            <Form.Control
-                              className='main-custom-input'
-                              onChange={ConfirmPurchaseChange}
-                              as="textarea"
-                              placeholder="House# Area Town City . . . ."
-                              rows={3}
-                              name="address"
-                            />
-                          </Form.Group>
-                          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
-                            <Form.Label>Nearest Landmark</Form.Label>
-                            <Form.Control
-                              className='main-custom-input'
-                              placeholder="like shop / masjid / School /etc"
-                              name="landmark"
-                              onChange={ConfirmPurchaseChange}
-                            />
-                          </Form.Group>
-                          {/* <Form.Group
+                              <Form className='main-form'>
+                                <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
+                                  <Form.Label>Your Full Name</Form.Label>
+                                  <Form.Control
+                                    className='main-custom-input'
+                                    onChange={ConfirmPurchaseChange}
+                                    placeholder="full name "
+                                    name="fullname"
+                                  />
+                                </Form.Group>
+                                <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
+                                  <Form.Label>What's App Number / Contact Number</Form.Label>
+                                  <Form.Control
+                                    className='main-custom-input'
+                                    placeholder="number"
+                                    onChange={ConfirmPurchaseChange}
+                                    maxLength={20}
+                                    name="number"
+                                  />
+                                </Form.Group>
+                                <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
+                                  <Form.Label>Address</Form.Label>
+                                  <Form.Control
+                                    className='main-custom-input'
+                                    onChange={ConfirmPurchaseChange}
+                                    as="textarea"
+                                    placeholder="House# Area Town City . . . ."
+                                    rows={3}
+                                    name="address"
+                                  />
+                                </Form.Group>
+                                <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
+                                  <Form.Label>Nearest Landmark</Form.Label>
+                                  <Form.Control
+                                    className='main-custom-input'
+                                    placeholder="like shop / masjid / School /etc"
+                                    name="landmark"
+                                    onChange={ConfirmPurchaseChange}
+                                  />
+                                </Form.Group>
+                                <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1" >
+                                  <Form.Label>Product Color</Form.Label>
+                                  <Form.Control
+                                    className='main-custom-input'
+                                    onChange={ConfirmPurchaseChange}
+                                    placeholder="color "
+                                    name="color"
+                                  />
+                                </Form.Group>
+                                {/* <Form.Group
                           className="mb-3"
                           controlId="exampleForm.ControlTextarea1"
                         >
                           <Form.Label>Example textarea</Form.Label>
                           <Form.Control as="textarea" className='main-custom-input' rows={3} />
                         </Form.Group> */}
-                        </Form>
-                      </Modal.Body>
+                              </Form>
+                            </Modal.Body>
+                          </div>
+                          <Modal.Footer>
+                            <div variant="secondary" className='main-Button' style={{ width: '110px', }} onClick={handleClose}>
+                              Close
+                            </div>
+                            <div variant="primary" className='main-Button' onClick={ConfirmPurchase}>
+                              Save Changes
+                            </div>
+                          </Modal.Footer>
+                        </Modal>
+                      </div>
                     </div>
-                    <Modal.Footer>
-                      <div variant="secondary" className='main-Button' style={{ width: '110px', }} onClick={handleClose}>
-                        Close
-                      </div>
-                      <div variant="primary" className='main-Button' onClick={ConfirmPurchase}>
-                        Save Changes
-                      </div>
-                    </Modal.Footer>
-                  </Modal>
+                  </Col>
                 </div>
-              </div>
-              </Col>
-              </div>
               </Row>
-              </Container>
-            
+            </Container>
+
           ) : (
             <p>Loading...</p>
           )}
